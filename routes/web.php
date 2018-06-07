@@ -13,6 +13,10 @@ Route::get('/home', function () {
     return view('home.index');
 });
 
+Route::get('/notice', function () {
+    return view('notice.index');
+});
+
 //登录
 Route::get('/login', 'LoginController@login')->name('login.login');
 Route::post('/login', 'LoginController@post_login')->name('login.p_login');
