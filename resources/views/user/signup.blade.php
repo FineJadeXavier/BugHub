@@ -3,10 +3,8 @@
 @section('main')
         <div id="Main">
             <div class="sep20"></div>
-
             <div class="box">
                 <div class="header"><a href="/">V2EX</a> <span class="chevron">&nbsp;›&nbsp;</span> 注册</div>
-
 
                 <div class="inner">
                     <form method="post" action="/signup">
