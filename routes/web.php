@@ -11,7 +11,7 @@ Route::get('/content', function () {
 
 Route::get('/home', function () {
     return view('home.index');
-}
+});
 
 //登录
 Route::get('/login', 'LoginController@login')->name('login.login');
