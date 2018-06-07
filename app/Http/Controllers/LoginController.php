@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 
 class LoginController extends Controller
 {
@@ -13,7 +14,7 @@ class LoginController extends Controller
     }
 
     //登录验证表单
-    public function p_login(Request $req)
+    public function p_login(LoginRequest $req)
     {
 
     }
@@ -24,7 +25,7 @@ class LoginController extends Controller
     }
 
     //注册验证表单
-    public function p_register(Request $req)
+    public function p_register(RegisterRequest $req)
     {
 
     }
