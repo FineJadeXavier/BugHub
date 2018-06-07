@@ -106,3 +106,5 @@
             </div>
         </div>
 @endsection()
+@section('js')
+@endsection()
