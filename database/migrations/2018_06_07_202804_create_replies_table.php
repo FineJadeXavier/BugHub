@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBugsTable extends Migration
+class CreateRepliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateBugsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bugs', function (Blueprint $table) {
+        Schema::create('replies', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('bug_id')->unsigned()->default(0)->index()->comment('BUG_ID');
             $table->integer('user_id')->unsigned()->default(0)->index()->comment('用户ID');
-            $table->string('sorts',10)->index()->comment('分类');
-            $table->string('title',50)->index()->comment('标题');
-            $table->longText('content')->comment('内容');
-            $table->integer('views')->unsigned()->default(0)->comment('查看数');
-            $table->integer('reply')->unsigned()->default(0)->comment('回复数');
+            $table->text('content')->comment('回复内容');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateBugsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bugs');
+        Schema::dropIfExists('replies');
     }
 }
