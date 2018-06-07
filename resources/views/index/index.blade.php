@@ -34,5 +34,5 @@
         <div class="sep20"></div>
     </div>
 @endsection()
-@section('')
+@section('js')
 @endsection()
