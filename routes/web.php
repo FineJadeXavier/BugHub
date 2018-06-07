@@ -1,21 +1,7 @@
 <?php
 
-Route::get('/', function () {
-    return view('index.index');
-});
-
-
-Route::get('/content', function () {
-    return view('content.index');
-});
-
-Route::get('/home', function () {
-    return view('home.index');
-});
-
-Route::get('/notice', function () {
-    return view('notice.index');
-});
+//首页
+Route::get('/', function () { return view('index.index');});
 
 //登录
 Route::get('/login', 'LoginController@login')->name('login.login');

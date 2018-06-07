@@ -29,18 +29,14 @@
                                 <td width="120" align="right" valign="top"><div class="sep5"></div>手机号</td>
                                 <td width="auto" align="left"><input type="tel" class="sls" name="phone_number" value="" autocorrect="off" spellcheck="false" autocapitalize="off" required="required" /><div class="sep5"></div></td>
                             </tr>
-
                             <tr>
                                 <td width="120" align="right">你是机器人么？</td>
                                 <td width="auto" align="left"><div style="background-image: url('/_captcha?once=44349'); background-repeat: no-repeat; width: 320px; height: 80px; border-radius: 3px; border: 1px solid #ccc;"></div><div class="sep10"></div><input type="text" class="sl" name="dfab61b2233500646e2e581f92bd9627841693d2bee15268f5e29b40fe114eaa" value="" autocorrect="off" spellcheck="false" autocapitalize="off" placeholder="请输入上图中的验证码" required="required" /></td>
                             </tr>
-
-
                             <tr>
                                 <td width="120" align="right">注册答题验证</td>
                                 <td width="auto" align="left"><div class="challenge_container">下列哪个操作会获得 V2EX 铜币？<div class="sep10"></div><select name="a"><option value="KxeOyUxgNDAPPfWWLPTpIQ==">编辑主题</option><option value="PWiH9qzVJPCsy1f_f0lDoZFROjhDkgQoNlMmYYVh3h2rxJg1A6qE50tpzyfXgrCY">回复收到来自其他用户的感谢</option><option value="KN4kc1ddcTYVG0CG5um2xSj_sdP7IHnlvqLimBV8lcw=">主题被其他用户收藏</option><option value="uCA19c_1fMuBnxTf6S69Jw==">发布新主题</option><option value="UooWrGbW6I_prVT6g9DxsjzzoWscospc7Z8pK-SOq2U=">上传图片到图库</option></select></div></td>
                             </tr>
-
                             <tr>
                                 <td width="120" align="right"></td>
                                 <td width="auto" align="left"><input type="hidden" name="once" value="44349" /><input type="submit" class="super normal button" value="注册" /></td>
