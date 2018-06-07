@@ -4,15 +4,24 @@
 Route::get('/', function () { return view('index.index');});
 
 //登录
-Route::get('/login', 'LoginController@login')->name('login.login');
-Route::post('/login', 'LoginController@post_login')->name('login.p_login');
+Route::get('/signin', function () {
+    return view('user.signin');
+})->name('user.signin');
+Route::post('/signin', 'UserController@signin')->name('user.signin.p');
 
 //注册
-Route::get('/register', 'LoginController@register')->name('login.register');
-Route::post('/register', 'LoginController@p_register')->name('login.p_register');
+Route::get('/signup', function () {
+    return view('user.signup');
+})->name('user.signup');
+Route::post('/signup', 'UserController@signup')->name('user.signup.p');
+
 
 
 //登录中间件
-Route::middleware('login')->group(function(){
+Route::middleware('signin')->group(function(){
+
+    //编辑个人资料
+    Route::get('/user/edit/', 'UserController@edit')->name('user.edit');
+
 
 });
