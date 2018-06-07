@@ -13,6 +13,10 @@ Route::get('/home', function () {
     return view('home.index');
 });
 
+Route::get('/notice', function () {
+    return view('notice.index');
+});
+
 //登录
 Route::get('/signin', function () {
     return view('user.signin');
