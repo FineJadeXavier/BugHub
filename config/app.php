@@ -149,9 +149,12 @@ return [
         'Douyasi\WangEditor\EditorServiceProvider', //富文本编辑器
         Mews\Captcha\CaptchaServiceProvider::class, //图形验证码
 
-        /*
-         * Package Service Providers...
+        /**
+         * TNTSearch 全文搜索
          */
+        Laravel\Scout\ScoutServiceProvider::class,
+        Vanry\Scout\TNTSearchScoutServiceProvider::class,
+
 
         /*
          * Application Service Providers...

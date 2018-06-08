@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Article;
 //编辑器图片默认会上传到 public/uploads/content 目录下；编辑器相关功能配置位于 config/wang-editor.php 文件中。
 //在 blade 模版里面使用下面三个方法：we_css() 、we_js() 、we_field() 和 we_config() 。
 //
@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\Route;
 
 //测试
 Route::get('/test', function () { echo phpinfo(); });
+
+//搜索
+Route::get('/search', function () {
+    dump(Article::search('php')->get()->toArray());
+    // 修改 content 测试索引是否会自动同步
+//    $first = Article::find(1);
+//    $first->content = '让全文检索变的简单而强大';
+//    $first->save();
+
+});
 
 //首页
 Route::get('/', function () { return view('index.index');})->name('index');

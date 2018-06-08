@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBugsTable extends Migration
+class CreateArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBugsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bugs', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->default(0)->index()->comment('用户ID');
             $table->string('sorts',10)->index()->comment('分类');
@@ -33,6 +33,6 @@ class CreateBugsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bugs');
+        Schema::dropIfExists('articles');
     }
 }
