@@ -24,8 +24,11 @@
                         </div>
                         正文
                     </div>
-                    <div style="text-align: left; border-bottom: 1px solid #e2e2e2; font-size: 14px; line-height: 120%;">
-                        <textarea style="visibility: hidden;" maxlength="20000" id="editor" name="content"></textarea>
+                    <div class="wangEdit">
+                        {!! we_css() !!}
+                        {!! we_js() !!}
+                        {!! we_field('wangeditor', 'content', '<p>wangEditor for Laravel</p>') !!}
+                        {!! we_config('wangeditor') !!}
                     </div>
                     <div class="cell">
                         <select name="node_name" id="nodes" style="width: 300px; font-size: 14px;" >

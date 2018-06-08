@@ -1,6 +1,12 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
+//编辑器图片默认会上传到 public/uploads/content 目录下；编辑器相关功能配置位于 config/wang-editor.php 文件中。
+//在 blade 模版里面使用下面三个方法：we_css() 、we_js() 、we_field() 和 we_config() 。
+//
+//请注意 we_field() 与 we_config() 第一个参数（对应下面示例中的 wangeditor ) 必须保持一致。
+//
+
 
 //首页
 Route::get('/', function () { return view('index.index');});
