@@ -41,9 +41,9 @@
 #### **依赖**
 
 - 依赖以下PHP扩展
-    - pdo_sqlite
-    - sqlite3
-    - mbstring
+    1. pdo_sqlite
+    2. sqlite3
+    3. mbstring
 
 #### **如何使用**
 
