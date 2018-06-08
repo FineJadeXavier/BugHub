@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Bug;
+
 class ArticleController extends Controller
 {
     /**
@@ -41,7 +43,7 @@ class ArticleController extends Controller
      * @param  \App\Models\Bug  $bug
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $bug)
+    public function show(Bug $bug)
     {
         //
     }
@@ -52,7 +54,7 @@ class ArticleController extends Controller
      * @param  \App\Models\Bug  $bug
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $bug)
+    public function edit(Bug $bug)
     {
         //
     }
@@ -64,7 +66,7 @@ class ArticleController extends Controller
      * @param  \App\Models\Bug  $bug
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $bug)
+    public function update(Request $request, Bug $bug)
     {
         //
     }
@@ -75,8 +77,8 @@ class ArticleController extends Controller
      * @param  \App\Models\Bug  $bug
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $bug)
+    public function destroy(Bug $bug)
     {
-        //
+        
     }
 }

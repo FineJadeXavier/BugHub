@@ -160,7 +160,7 @@
                             <td width="60" align="left"><span class="gray" v-text="words"></span></td>
                         </tr>
                         <tr>
-                            <td width="60" align="right"><span class="fade"class="fade" style="font-size: 12px;">——《@{{ auther }}》</span></td>
+                            <td width="60" align="right"><span class="fade" style="font-size: 12px;">——《@{{ auther }}》</span></td>
                         </tr>
                     </table>
                 </div>
