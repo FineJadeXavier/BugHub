@@ -15,10 +15,12 @@ class CreateRepliesTable extends Migration
     {
         Schema::create('replies', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('bug_id')->unsigned()->default(0)->index()->comment('BUG_ID');
-            $table->integer('user_id')->unsigned()->default(0)->index()->comment('用户ID');
+            $table->integer('article_id')->unsigned()->default(0)->index()->comment('主题id');
+            $table->integer('user_id')->unsigned()->default(0)->index()->comment('评论用户id');
+            $table->integer('to_user_id')->unsigned()->default(0)->index()->comment('评论目标用户id');
             $table->text('content')->comment('回复内容');
             $table->timestamps();
+            $table->engine='InnoDB';
         });
     }
 

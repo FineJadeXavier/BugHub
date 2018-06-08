@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password',60)->comment('密码');
             $table->string('email',50)->index()->comment('邮件地址');
             $table->timestamps();
+            $table->engine='InnoDB';
         });
     }
 

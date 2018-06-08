@@ -16,6 +16,7 @@ class CreateSortsTable extends Migration
         Schema::create('sorts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('sort_name',10)->index()->comment('分类名称');
+            $table->engine='InnoDB';
         });
     }
 

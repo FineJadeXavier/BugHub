@@ -10,19 +10,25 @@
                         <table cellpadding="5" cellspacing="0" border="0" width="100%">
                             <tr>
                                 <td width="120" align="right" valign="top"><div class="sep5"></div>用户名</td>
-                                <td width="auto" align="left"><input type="text" class="sls" name="c559c7974e774885b1a13c2544f2372bf3ff7b3e652178aab337e534059afe09" value="" autocomplete="off" autocorrect="off" spellcheck="false" autocapitalize="off" required="required" /><div class="sep5"></div><span class="fade">请使用半角的 a-z 或数字 0-9</span></td>
+                                <td width="auto" align="left"><input type="text" class="sls" name="nickname" value="" autocomplete="off" autocorrect="off" spellcheck="false" autocapitalize="off" required="required" /><div class="sep5"></div><span class="fade">请使用半角的 a-z 或数字 0-9</span></td>
                             </tr>
                             <tr>
                                 <td width="120" align="right">密码</td>
-                                <td width="auto" align="left"><input type="password" class="sls" name="email" value="" autocomplete="new-password" autocorrect="off" spellcheck="false" autocapitalize="off" required="required" /></td>
+                                <td width="auto" align="left"><input type="password" class="sls" name="password" value="" autocomplete="new-password" autocorrect="off" spellcheck="false" autocapitalize="off" required="required" /></td>
                             </tr>
                             <tr>
                                 <td width="120" align="right" valign="top"><div class="sep5"></div>电子邮件</td>
-                                <td width="auto" align="left"><input type="email" class="sls" name="741ad6dec5e87aa2f1dd36e7c92e2e0672385de09f4fe8bc5b2d8d0fff067272" value="" autocorrect="off" spellcheck="false" autocapitalize="off" required="required" /><div class="sep5"></div><span class="fade">请使用真实电子邮箱注册，将用于找回密码。</span></td>
+                                <td width="auto" align="left"><input type="email" class="sls" name="email" value="" autocorrect="off" spellcheck="false" autocapitalize="off" required="required" /><div class="sep5"></div><span class="fade">请使用真实电子邮箱注册，将用于找回密码。</span></td>
                             </tr>
                             <tr>
                                 <td width="120" align="right">你是机器人么？</td>
-                                <td width="auto" align="left"><div style="background-image: url('/_captcha?once=44349'); background-repeat: no-repeat; width: 320px; height: 80px; border-radius: 3px; border: 1px solid #ccc;"></div><div class="sep10"></div><input type="text" class="sl" name="dfab61b2233500646e2e581f92bd9627841693d2bee15268f5e29b40fe114eaa" value="" autocorrect="off" spellcheck="false" autocapitalize="off" placeholder="请输入上图中的验证码" required="required" /></td>
+                                <td width="auto" align="left">
+                                    <div style="background-repeat: no-repeat;width: 320px; height: 80px; border-radius: 3px; border: 1px solid #ccc;">
+                                        <img src="{!! Captcha::src(); !!}" alt=""  onclick="javascript:this.src='/captcha/default??time='+Math.random()">
+                                    </div>
+                                    <div class="sep10"></div>
+                                    <input type="text"  class="sl" name="captcha" value="" autocorrect="off" spellcheck="false" autocapitalize="off" placeholder="请输入上图中的验证码" required="required" />
+                                </td>
                             </tr>
                             <tr>
                                 <td width="120" align="right"></td>
