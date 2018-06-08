@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bug;
 use Illuminate\Http\Request;
 
-class BugController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.

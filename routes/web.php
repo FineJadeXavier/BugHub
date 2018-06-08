@@ -7,6 +7,7 @@ use App\Models\Article;
 //请注意 we_field() 与 we_config() 第一个参数（对应下面示例中的 wangeditor ) 必须保持一致。
 //
 
+
 //测试
 Route::get('/test', function () { echo phpinfo(); });
 
@@ -20,7 +21,6 @@ Route::get('/search', function () {
     dump(Article::search('php')->get()->toArray());
     //    $first = Article::find(1);
 });
-
 
 
 /*
@@ -55,14 +55,19 @@ Route::post('/signin', 'UserController@signin')->name('user.signin.p');
 Route::get('/signup', function () {return view('user.signup');})->name('user.signup');
 Route::post('/signup', 'UserController@signup')->name('user.signup.p');
 
+//新文章
 Route::get('/article/new',function () {return view('article.write');} )->name('article.new');
+//编辑文章
+Route::get('/article/edit',function () {return view('article.edit');} )->name('article.edit');
 
+//编辑个人资料
+Route::get('/user/edit/',function () {return view('user.edit');} )->name('user.edit');
 
 //登录中间件
 Route::middleware('signin')->group(function(){
 
     //编辑个人资料
-    Route::get('/user/edit/', 'UserController@edit')->name('user.edit');
+//    Route::get('/user/edit/', 'UserController@edit')->name('user.edit');
 
     //写文章
 

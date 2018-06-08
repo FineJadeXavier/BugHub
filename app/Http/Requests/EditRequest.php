@@ -25,6 +25,7 @@ class EditRequest extends FormRequest
     {
         return [
             'nickname'=>'required|min:2|max:15',
+            'email'=>'required|min:2|max:15',
         ];
     }
 
