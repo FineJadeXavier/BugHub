@@ -40,10 +40,10 @@
 
 #### **依赖**
 
-- 依赖以下PHP扩展
-    - pdo_sqlite
-    - sqlite3
-    - mbstring
+依赖以下PHP扩展
+   - pdo_sqlite
+   - sqlite3
+   - mbstring
 
 #### **如何使用**
 
