@@ -17,7 +17,7 @@
                                     用户名
                                 </td>
                                 <td width="auto" align="left">
-                                    <input type="text" class="sl" name="e30eee4abab8be6edb4e996f0aae9364734dbb84904161b760ee808eaebb015a" value="" autofocus="autofocus" autocorrect="off" spellcheck="false" autocapitalize="off" placeholder="用户名或电子邮箱地址"/>
+                                    <input type="text" class="sl" name="nickname" value="" autofocus="autofocus" autocorrect="off" spellcheck="false" autocapitalize="off" placeholder="用户名或电子邮箱地址"/>
                                 </td>
                             </tr>
                             <tr>
@@ -25,7 +25,7 @@
                                     密码
                                 </td>
                                 <td width="auto" align="left">
-                                    <input type="password" class="sl" name="65cbe7bae16756f439444c37963677837aff49059dbaea32de4285b3c4644c44" value="" autocorrect="off" spellcheck="false" autocapitalize="off"/>
+                                    <input type="password" class="sl" name="password" value="" autocorrect="off" spellcheck="false" autocapitalize="off"/>
                                 </td>
                             </tr>
                             <tr>
@@ -33,11 +33,12 @@
                                     你是机器人么？
                                 </td>
                                 <td width="auto" align="left">
-                                    <div style="background-image: url('/_captcha?once=53166'); background-repeat: no-repeat; width: 320px; height: 80px; border-radius: 3px; border: 1px solid #ccc;">
+                                    <div style=" background-repeat: no-repeat; width: 320px; height: 80px; border-radius: 3px; border: 1px solid #ccc;">
+                                        <img src="{!! Captcha::src(); !!}" alt=""  onclick="javascript:this.src='/captcha/default?time='+Math.random()">
                                     </div>
                                     <div class="sep10">
                                     </div>
-                                    <input type="text" class="sl" name="validata" value="" autocorrect="off" spellcheck="false" autocapitalize="off" placeholder="请输入上图中的验证码"/>
+                                    <input type="text" class="sl" name="captcha" value="" autocorrect="off" spellcheck="false" autocapitalize="off" placeholder="请输入上图中的验证码"/>
                                 </td>
                             </tr>
                             <tr>

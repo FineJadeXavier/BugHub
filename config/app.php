@@ -147,6 +147,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         'Douyasi\WangEditor\EditorServiceProvider', //富文本编辑器
+        Mews\Captcha\CaptchaServiceProvider::class, //图形验证码
 
         /*
          * Package Service Providers...
@@ -209,6 +210,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,//图形验证码
 
     ],
 
