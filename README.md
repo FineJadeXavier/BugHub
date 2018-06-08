@@ -31,3 +31,18 @@
         {!! we_field('wangeditor', 'content', '这里是事先写在里面的') !!}
         {!! we_config('wangeditor') !!}
     </div>
+    
+----------
+
+### 全文索引 + 分词搜索
+
+- 用的TNTSearch + jieba分词
+
+#### **如何使用？**
+
+- 把要搜索的词给 Article::search() 处理
+
+##### **实例** 搜索 'php'
+        Route::get('/search', function () {
+           return Article::search('php')->get();
+        });
