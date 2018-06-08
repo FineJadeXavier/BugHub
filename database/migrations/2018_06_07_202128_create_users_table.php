@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('nickname',15)->index()->comment('昵称');
             $table->string('password',60)->comment('密码');
+            $table->string('email',50)->index()->comment('邮件地址');
             $table->timestamps();
         });
     }
