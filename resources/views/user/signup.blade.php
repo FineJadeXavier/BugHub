@@ -38,7 +38,7 @@
                             <tr>
                                 <td width="120" align="right">你是机器人么？</td>
                                 <td width="auto" align="left">
-                                    <div style="background-repeat: no-repeat;width: 320px; height: 80px; border-radius: 3px; border: 1px solid #ccc;">
+                                    <div style="background-repeat: no-repeat;cursor: pointer;width: 320px; height: 80px; border-radius: 3px; border: 1px solid #ccc;" title="点击刷新验证码">
                                         <img src="{!! Captcha::src(); !!}" alt=""  onclick="javascript:this.src='/captcha/default??time='+Math.random()">
                                     </div>
                                     <div class="sep10"></div>
@@ -59,4 +59,8 @@
         </div>
 @endsection()
 @section('js')
+    {{--判断是否登录--}}
+    @if(session('id'))
+       {!!  redirect()->route('index'); !!}
+    @endif()
 @endsection()

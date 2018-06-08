@@ -44,6 +44,7 @@ Route::get("/user/home/{nickname}", "UserController@home")->name('user.home');
  * 获取文章人数
  */
 Route::get('/api/members/get',"UserController@api");
+
 Route::get('/api/articles/get',"ArticleController@api");
 
 
