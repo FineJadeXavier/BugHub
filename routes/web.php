@@ -45,7 +45,7 @@ Route::get("/user/home/{nickname}", "UserController@home")->name('user.home');
  */
 Route::get('/api/members/get',"UserController@api");
 
-Route::get('/api/articles/get',"ArticleController@api");
+Route::get('/api/articles/get',"UserController@apia");
 
 
 //登录中间件

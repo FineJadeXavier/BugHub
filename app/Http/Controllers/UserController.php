@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\Article;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\SigninRequest;
@@ -114,5 +115,10 @@ class UserController extends Controller
     function api()
     {
         return User::all()->count();
+    }
+
+    function apia()
+    {
+        return Article::all()->count();
     }
 }
