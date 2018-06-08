@@ -3,7 +3,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //首页
-Route::get('/', function () { return view('index.index');});
+Route::get('/', function () { return view('index.index');})->name('index');
 
 //登录
 Route::get('/signin', function () {return view('user.signin');})->name('user.signin');
@@ -18,6 +18,5 @@ Route::middleware('signin')->group(function(){
 
     //编辑个人资料
     Route::get('/user/edit/', 'UserController@edit')->name('user.edit');
-
 
 });
