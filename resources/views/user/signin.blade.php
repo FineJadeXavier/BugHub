@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="sep10">
                                     </div>
-                                    <input type="text" class="sl" name="fb85c95e51084f4c49647ee055181c7262c1f0f08b60cfdf2207ea25610dd0b4" value="" autocorrect="off" spellcheck="false" autocapitalize="off" placeholder="请输入上图中的验证码"/>
+                                    <input type="text" class="sl" name="validata" value="" autocorrect="off" spellcheck="false" autocapitalize="off" placeholder="请输入上图中的验证码"/>
                                 </td>
                             </tr>
                             <tr>
