@@ -110,4 +110,9 @@ class UserController extends Controller
             return redirect()->route('index');
         return view("user.home",['user'=>$user]);
     }
+
+    function api()
+    {
+        return User::all()->count();
+    }
 }

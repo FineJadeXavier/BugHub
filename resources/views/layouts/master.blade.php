@@ -211,12 +211,29 @@
                 auther:'',
             },
             created() {
+                //获取一言
                 fetch("https://v1.hitokoto.cn/?c=d&encode=json")
                     .then(response => response.json())
                     .then(json => {
                         this.words = json.hitokoto;
                         this.auther = json.from
                     });
+                //获取用户数
+                fetch("/api/members/get")
+                    .then((res)=>{
+                        return res.text()
+                    })
+                    .then((res)=>{
+                        this.members = res;
+                    })
+                //获取主题数
+                fetch("/api/articles/get")
+                    .then((res)=>{
+                        return res.text()
+                    })
+                    .then((res)=>{
+                        this.articles = res;
+                    })
             }
         });
 
