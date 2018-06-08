@@ -13,11 +13,16 @@ Route::post('/signin', 'UserController@signin')->name('user.signin.p');
 Route::get('/signup', function () {return view('user.signup');})->name('user.signup');
 Route::post('/signup', 'UserController@signup')->name('user.signup.p');
 
+Route::get('/article/new',function () {return view('article.write');} )->name('article.new');
+
+
 //登录中间件
 Route::middleware('signin')->group(function(){
 
     //编辑个人资料
     Route::get('/user/edit/', 'UserController@edit')->name('user.edit');
+
+    //写文章
 
 
 });
