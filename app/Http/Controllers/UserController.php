@@ -112,12 +112,12 @@ class UserController extends Controller
         return view("user.home",['user'=>$user]);
     }
 
-    function api()
+    function api_menbers()
     {
         return User::all()->count();
     }
 
-    function apia()
+    function api_articles()
     {
         return Article::all()->count();
     }

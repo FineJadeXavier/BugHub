@@ -43,9 +43,9 @@ Route::get("/user/home/{nickname}", "UserController@home")->name('user.home');
  * 获取注册人数
  * 获取文章人数
  */
-Route::get('/api/members/get',"UserController@api");
+Route::get('/api/members/get',"UserController@api_menbers");
 
-Route::get('/api/articles/get',"UserController@apia");
+Route::get('/api/articles/get',"UserController@api_articles");
 
 
 //登录中间件
