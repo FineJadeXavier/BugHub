@@ -201,6 +201,6 @@
                     });
             }
         });
-        @yield('js')
     })
 </script>
+@yield('js')

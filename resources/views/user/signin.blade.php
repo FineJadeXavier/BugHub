@@ -7,7 +7,7 @@
             <div class="box">
                 <div class="header">
                     <a href="/">V2EX</a><span class="chevron">&nbsp;›&nbsp;</span> 登录 &nbsp;
-                    <li class="fa fa-lock"></li>
+                    <img src="/suo.png" alt="" style="width: 16px;position: relative;top: 2px;left: -10px;">
                 </div>
                 <div class="cell">
                     <form method="post" action="/signin">
