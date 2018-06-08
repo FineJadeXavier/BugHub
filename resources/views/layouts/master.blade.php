@@ -36,7 +36,7 @@
                         <a href="/" class="top">首页</a>&nbsp;&nbsp;&nbsp;
                         <a href="{{ Route('user.home',['nickname'=>session('nickname')]) }}" class="top">{{ session('nickname') }}</a>&nbsp;&nbsp;&nbsp;
                         <a href="/settings" class="top">设置</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#;" onclick="if (confirm('确定要从 V2EX 登出？')) { location.href= '/signout'; }" class="top">登出</a>
+                        <a href="#;" id="signout" @click="signout" class="top">登出</a>
                     </td>
                     @endif
                 </tr>
@@ -116,7 +116,7 @@
                             <td width="10">
                             </td>
                             <td width="auto" valign="middle" align="left">
-                                <a href="/new">创作新主题</a>
+                                <a href="{{ Route('article.new') }}">创作新主题</a>
                             </td>
                         </tr>
                     </table>
@@ -194,7 +194,7 @@
 </html>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
-<script src="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.all.min.js"></script>
+<script src="https://unpkg.com/sweetalert2@7.22.0/dist/sweetalert2.all.min.js"></script>
 <script>
     $(function () {
         /*
@@ -236,7 +236,53 @@
                     })
             }
         });
-
+        /*
+        *   退出登录
+        *
+        */
+        let signout = new Vue({
+            el:'#signout',
+            methods:{
+                signout:function(){
+                    swal({
+                        title: '确定登出吗?',
+                        // text: "You won't be able to revert this!",
+                        type: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#28a745',
+                        cancelButtonText: '再留一会儿',
+                        confirmButtonText: '我要走了'
+                    }).then((result) => {
+                        if (result.value) {
+                            let timerInterval
+                            swal({
+                                title: '正在登出!',
+                                html: '正在清除临时数据 <strong></strong> KB.',
+                                timer: 2000,
+                                onOpen: () => {
+                                    swal.showLoading()
+                                    timerInterval = setInterval(() => {
+                                        swal.getContent().querySelector('strong')
+                                            .textContent = swal.getTimerLeft()
+                                    }, 100)
+                                },
+                                onClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            }).then((result) => {
+                                if (
+                                    // Read more about handling dismissals
+                                    result.dismiss === swal.DismissReason.timer
+                                ) {
+                                    location.href="/signout"
+                                }
+                            })
+                        }
+                    })
+                }
+            }
+        })
 
     });
 </script>

@@ -12,4 +12,10 @@ class TopicController extends Controller
     {
         return Article::all()->count();
     }
+
+    //发布文章
+    function write()
+    {
+
+    }
 }

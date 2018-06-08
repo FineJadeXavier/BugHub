@@ -2,9 +2,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Article;
 
-//测试
-Route::get('/test', function () { echo phpinfo(); });
-
 /*
  *@title 全文分词搜索
  *
@@ -27,8 +24,7 @@ Route::post('/signin', 'UserController@signin')->name('user.signin.p');
 Route::get('/signup', function () {return view('user.signup');})->name('user.signup');
 Route::post('/signup', 'UserController@signup')->name('user.signup.p');
 
-//新文章
-Route::get('/article/new',function () {return view('article.write');} )->name('article.new');
+
 //编辑文章
 Route::get('/article/edit',function () {return view('article.edit');} )->name('article.edit');
 
@@ -45,7 +41,7 @@ Route::get("/user/home/{nickname}", "UserController@home")->name('user.home');
  */
 Route::get('/api/members/get',"UserController@api");
 
-Route::get('/api/articles/get',"UserController@api");
+Route::get('/api/articles/get',"TopicController@api");
 
 
 //登录中间件
@@ -54,7 +50,12 @@ Route::middleware('signin')->group(function(){
     //编辑个人资料
 //    Route::get('/user/edit/', 'UserController@edit')->name('user.edit');
 
-    //写文章
+    //发布文章
+    Route::get('/article/new',function () {return view('article.write');} )->name('article.new');
+    Route::post('/article/new',"TopicController@write" )->name('article.new.post');
+
+    //退出登录
+    Route::get("signout",function(){ session()->flush() ; return redirect()->route('index'); })->name('signout');
 
 
 });
