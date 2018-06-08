@@ -38,11 +38,18 @@
 
 - 用的TNTSearch + jieba分词
 
-#### **如何使用？**
+#### **依赖**
+
+- 依赖以下PHP扩展
+    - pdo_sqlite
+    - sqlite3
+    - mbstring
+
+#### **如何使用**
 
 - 把要搜索的词给 Article::search() 处理
 
-##### **实例** 搜索 'php'
+#### **实例** 搜索 'php'
         Route::get('/search', function () {
            return Article::search('php')->get();
         });
