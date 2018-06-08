@@ -10,14 +10,38 @@ use App\Models\Article;
 //测试
 Route::get('/test', function () { echo phpinfo(); });
 
-//搜索
+/*
+ *@title 全文分词搜索
+ *
+ *@methods 生成索引
+ *         php artisan scout:import "App\Models\Article"
+ */
 Route::get('/search', function () {
     dump(Article::search('php')->get()->toArray());
-    // 修改 content 测试索引是否会自动同步
-//    $first = Article::find(1);
-//    $first->content = '让全文检索变的简单而强大';
-//    $first->save();
+    //    $first = Article::find(1);
+});
 
+
+
+/*
+ * 验证码
+ *
+*/
+Route::any('captcha-test', function()
+{
+    if (Request::getMethod() == 'POST')
+    {
+        $rules = ['captcha' => 'required|captcha'];
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails())
+        {
+           return 'error';
+        }
+        else
+        {
+            return 'success';
+        }
+    }
 });
 
 //首页
