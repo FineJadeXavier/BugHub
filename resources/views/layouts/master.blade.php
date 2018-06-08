@@ -34,9 +34,9 @@
                     @else
                     <td width="570" align="right" style="padding-top: 2px;">
                         <a href="/" class="top">首页</a>&nbsp;&nbsp;&nbsp;
-                        <a href="/member/FineJadeXavier" class="top">FineJadeXavier</a>&nbsp;&nbsp;&nbsp;
+                        <a href="/member/{{ session('nickname') }}" class="top">{{ session('nickname') }}</a>&nbsp;&nbsp;&nbsp;
                         <a href="/settings" class="top">设置</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#;" onclick="if (confirm('确定要从 V2EX 登出？')) { location.href= '/signout?once=27533'; }" class="top">登出</a>
+                        <a href="#;" onclick="if (confirm('确定要从 V2EX 登出？')) { location.href= '/signout'; }" class="top">登出</a>
                     </td>
                     @endif
                 </tr>
@@ -70,12 +70,13 @@
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
                             <td width="48" valign="top">
-                                <a href="/member/FineJadeXavier"><img src="//cdn.v2ex.com/gravatar/2f7b329e7e4f8bfc774e6ef2ddfa2357?s=48&d=retro" class="avatar" border="0" align="default" style="max-width: 48px; max-height: 48px;"/></a>
+                                <a href="/member/{{ session('nickname') }}">
+                                    <img src="{{ session('avatar') }}" class="avatar" border="0" align="default" style="max-width: 48px; max-height: 48px;"/></a>
                             </td>
                             <td width="10" valign="top">
                             </td>
                             <td width="auto" align="left">
-                                <span class="bigger"><a href="/member/FineJadeXavier">FineJadeXavier</a></span>
+                                <span class="bigger"><a href="/member/{{ session('nickname') }}">{{ session('nickname') }}</a></span>
                             </td>
                         </tr>
                     </table>
@@ -186,6 +187,7 @@
 </html>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.all.min.js"></script>
 <script>
     $(function () {
         let hitokoto = new Vue({

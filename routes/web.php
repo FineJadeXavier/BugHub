@@ -22,28 +22,6 @@ Route::get('/search', function () {
     //    $first = Article::find(1);
 });
 
-
-/*
- * 验证码
- *
-*/
-Route::any('captcha-test', function()
-{
-    if (Request::getMethod() == 'POST')
-    {
-        $rules = ['captcha' => 'required|captcha'];
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails())
-        {
-           return 'error';
-        }
-        else
-        {
-            return 'success';
-        }
-    }
-});
-
 //首页
 Route::get('/', function () { return view('index.index');})->name('index');
 

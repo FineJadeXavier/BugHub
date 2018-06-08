@@ -6,11 +6,11 @@
             </div>
             <div class="box">
                 <div class="header">
-                    <a href="/">V2EX</a><span class="chevron">&nbsp;›&nbsp;</span> 登录 &nbsp;
+                    <a href="/">DEBUG</a><span class="chevron">&nbsp;›&nbsp;</span> 登录 &nbsp;
                     <img src="/suo.png" alt="" style="width: 16px;position: relative;top: 2px;left: -10px;">
                 </div>
                 <div class="cell">
-                    <form method="post" action="/signin">
+                    <form method="post" action="{{ Route('user.signin.p') }}">
                         <table cellpadding="5" cellspacing="0" border="0" width="100%">
                             <tr>
                                 <td width="120" align="right">
@@ -56,11 +56,17 @@
                                 </td>
                             </tr>
                         </table>
-                        <input type="hidden" value="/" name="next"/>
+                        @csrf
                     </form>
                 </div>
             </div>
         </div>
 @endsection()
 @section('js')
+    {{--输出报错信息--}}
+    @if (count($errors) > 0)
+        <script>
+            swal("{{ $errors->first() }}",'','error')
+        </script>
+    @endif
 @endsection()

@@ -24,9 +24,9 @@ class SignupRequest extends FormRequest
     public function rules()
     {
         return [
-            'nickname'=>'required|min:2|max:15',
+            'nickname'=>'required|regex:/^[a-zA-Z\x4e00-\x9fa5_]{3,15}/u',
             'password'=>'required|min:6|max:20',
-            'email' => 'required|email|max:50',
+            'email' => 'required|regex:/\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/',
         ];
     }
 
@@ -34,11 +34,12 @@ class SignupRequest extends FormRequest
     {
         return [
             'nickname.required' => '昵称不能为空！',
-            'nickname.min' => '昵称不能小于2个字符！',
-            'nickname.max' => '昵称不能大于15个字符！',
+            'nickname.regex' => '昵称不符合要求！',
             'password.required' => '密码不能为空！',
             'password.min' => '密码不能小于6个字符！',
             'password.max' => '密码不能大于20个字符！',
+            'email.required' => "邮箱必填！",
+            'email.regex' => "邮箱格式错误!",
         ];
     }
 }

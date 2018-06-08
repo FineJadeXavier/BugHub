@@ -1,14 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\User;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\SigninRequest;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\EditRequest;
 use App\Http\Requests\ResetPwdRequest;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 class UserController extends Controller
 {
     /*
@@ -16,15 +15,21 @@ class UserController extends Controller
      */
     public function signin(SigninRequest $req)
     {
+        //验证码验证
+        $rules = ['captcha' => 'required|captcha'];
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails())
+            return back()->withErrors(['验证码错误']);
+
         //从数据库获取用户信息
-        $user = User::where('nickname',$req->nickname)->first();
+        $user = User::where('nickname',$req->nickname)->orWhere('email',$req->nickname)->first();
 
         //判断用户是否存在
         if (!$user)
             //用户昵称不存在，返回
             return back()->withErrors('用户不存在！');
 
-            //验证密码是否正确
+        //验证密码是否正确
         if (!Hash::check($req->password, $user->password))
             //用户密码不存在，返回
             return back()->withErrors('密码错误！');
@@ -33,6 +38,7 @@ class UserController extends Controller
         session([
             'id' => $user->id,
             'nickname' => $user->nickname,
+            'avatar' => $user->avatar
         ]);
         //登录跳转
         return redirect()->route('index');
@@ -44,16 +50,26 @@ class UserController extends Controller
      */
     public function signup(SignupRequest $req)
     {
+        //验证码验证
+        $rules = ['captcha' => 'required|captcha'];
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails())
+            return back()->withErrors(['验证码错误']);
         //注册信息保存到数据库中
         $user = new User;
-        $url = "http://www.gravatar.com/avatar/{$user->id}?s=100&d=monsterid";
-        $user->fill([
-            'nickname' => $req->nickname,
-            'password' => Hash::make($req->password),
-            "avatar" => $url
-            'email' => $req->email,
-        ]);
+        $user->nickname = $req->nickname;
+        $user->password = Hash::make($req->password);
+        $user->avatar = "http://www.gravatar.com/avatar/" . rand(1, 99998) . "?s=100&d=monsterid";;
+        $user->email = $req->email;
         $user->save();
+
+        //保存用户id和昵称到session中
+        session([
+            'id' => $user->id,
+            'nickname' => $user->nickname,
+            'avatar' => $user->avatar
+        ]);
+        return redirect()->route('index');
     }
 
     /*
