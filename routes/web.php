@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 //请注意 we_field() 与 we_config() 第一个参数（对应下面示例中的 wangeditor ) 必须保持一致。
 //
 
+//测试
+Route::get('/test', function () { echo phpinfo(); });
 
 //首页
 Route::get('/', function () { return view('index.index');})->name('index');

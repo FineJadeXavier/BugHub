@@ -22,6 +22,7 @@ class CreateBugsTable extends Migration
             $table->integer('views')->unsigned()->default(0)->comment('查看数');
             $table->integer('reply')->unsigned()->default(0)->comment('回复数');
             $table->timestamps();
+            $table->engine='InnoDB';
         });
     }
 
