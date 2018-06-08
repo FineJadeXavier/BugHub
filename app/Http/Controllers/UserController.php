@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Predis\Cluster\Hash;
+use Hash;
 use App\Http\Requests\SigninRequest;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\EditRequest;
@@ -51,6 +51,7 @@ class UserController extends Controller
             'nickname' => $req->nickname,
             'password' => Hash::make($req->password),
             "avatar" => $url
+            'email' => $req->email,
         ]);
         $user->save();
     }
@@ -63,9 +64,9 @@ class UserController extends Controller
     {
         //从数据库获取用户信息
         $user = User::where('id',session('id'))->first();
-
         //修改用户信息
-        $user->nickname = $req->nickname;
+        // 不支持用户名修改
+        // $user->nickname = $req->nickname; 
         $user->email = $req->email;
         $user->save();
     }
