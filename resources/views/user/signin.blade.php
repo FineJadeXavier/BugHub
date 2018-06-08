@@ -45,7 +45,7 @@
                                 <td width="120" align="right">
                                 </td>
                                 <td width="auto" align="left">
-                                    <input type="hidden" value="53166" name="once"/><input type="submit" class="super normal button" value="登录"/>
+                                    <input type="submit" class="super normal button" value="登录"/>
                                 </td>
                             </tr>
                             <tr>
@@ -63,10 +63,4 @@
         </div>
 @endsection()
 @section('js')
-    {{--输出报错信息--}}
-    @if (count($errors) > 0)
-        <script>
-            swal("{{ $errors->first() }}",'','error')
-        </script>
-    @endif
 @endsection()

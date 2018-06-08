@@ -34,7 +34,7 @@
                     @else
                     <td width="570" align="right" style="padding-top: 2px;">
                         <a href="/" class="top">首页</a>&nbsp;&nbsp;&nbsp;
-                        <a href="/member/{{ session('nickname') }}" class="top">{{ session('nickname') }}</a>&nbsp;&nbsp;&nbsp;
+                        <a href="{{ Route('user.home',['nickname'=>session('nickname')]) }}" class="top">{{ session('nickname') }}</a>&nbsp;&nbsp;&nbsp;
                         <a href="/settings" class="top">设置</a>&nbsp;&nbsp;&nbsp;
                         <a href="#;" onclick="if (confirm('确定要从 V2EX 登出？')) { location.href= '/signout'; }" class="top">登出</a>
                     </td>
@@ -70,13 +70,15 @@
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
                             <td width="48" valign="top">
-                                <a href="/member/{{ session('nickname') }}">
+                                <a href="{{ Route('user.home',['nickname'=>session('nickname')]) }}">
                                     <img src="{{ session('avatar') }}" class="avatar" border="0" align="default" style="max-width: 48px; max-height: 48px;"/></a>
                             </td>
                             <td width="10" valign="top">
                             </td>
                             <td width="auto" align="left">
-                                <span class="bigger"><a href="/member/{{ session('nickname') }}">{{ session('nickname') }}</a></span>
+                                <span class="bigger">
+                                    <a href="{{ Route('user.home',['nickname'=>session('nickname')]) }}">{{ session('nickname') }}</a>
+                                </span>
                             </td>
                         </tr>
                     </table>
@@ -137,21 +139,28 @@
             @endif
 
             <div class="sep20"></div>
-            <div class="box">
+            <div class="box" id="situation">
                 <div class="cell"><span class="fade">社区运行状况</span></div>
                 <div class="cell">
                     <table cellpadding="5" cellspacing="0" border="0" width="100%">
                         <tr>
                             <td width="60" align="right"><span class="gray">注册会员</span></td>
-                            <td width="auto" align="left"><strong>321174</strong></td>
+                            <td width="auto" align="left"><strong v-text="members"></strong></td>
                         </tr>
                         <tr>
                             <td width="60" align="right"><span class="gray">主题</span></td>
-                            <td width="auto" align="left"><strong>461271</strong></td>
+                            <td width="auto" align="left"><strong v-text="articles"></strong></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="cell"><span class="fade">社区一语</span></div>
+                <div class="cell">
+                    <table cellpadding="5" cellspacing="0" border="0" width="100%">
+                        <tr>
+                            <td width="60" align="left"><span class="gray" v-text="words"></span></td>
                         </tr>
                         <tr>
-                            <td width="60" align="right"><span class="gray">回复</span></td>
-                            <td width="auto" align="left"><strong>5760400</strong></td>
+                            <td width="60" align="right"><span class="fade"class="fade" style="font-size: 12px;">——《@{{ auther }}》</span></td>
                         </tr>
                     </table>
                 </div>
@@ -173,8 +182,6 @@
                 <a href="/about" class="dark" target="_self">反馈</a>
                 <span> · </span>
                 <a href="https://github.com/FineJadeXavier/debug" class="dark" target="_blank" title="GitHub"><img src="/github.png" alt="GitHub" style="width: 16px;position: relative;top: 2px;"></a>
-                <div class="sep20"></div>
-                <p class="hitokoto" v-text="words"></p>
             </strong>
         </div>
     </div>
@@ -190,19 +197,36 @@
 <script src="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.all.min.js"></script>
 <script>
     $(function () {
-        let hitokoto = new Vue({
-            el:'.hitokoto',
-            data:{
-                words:"",
+        /*
+        * 获取注册会员数
+        * 获取 主题数
+        * 一言
+        */
+        let situation = new Vue({
+            el: '#situation',
+            data: {
+                words: "",
+                members:'',
+                articles:'',
+                auther:'',
             },
-            created(){
+            created() {
                 fetch("https://v1.hitokoto.cn/?c=d&encode=json")
-                    .then(response=>response.json())
-                    .then(json=>{
-                        this.words = json.hitokoto
+                    .then(response => response.json())
+                    .then(json => {
+                        this.words = json.hitokoto;
+                        this.auther = json.from
                     });
             }
         });
-    })
+
+
+    });
 </script>
+{{--输出报错信息--}}
+@if (count($errors) > 0)
+    <script>
+        swal("{{ $errors->first() }}",'','error')
+    </script>
+@endif
 @yield('js')

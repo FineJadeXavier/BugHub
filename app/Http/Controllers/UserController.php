@@ -8,6 +8,7 @@ use App\Http\Requests\EditRequest;
 use App\Http\Requests\ResetPwdRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /*
@@ -96,5 +97,17 @@ class UserController extends Controller
         $user->password = Hash::make($req->password);
 
         $user->save();
+    }
+
+    /*
+     * 个人中心
+     *
+     */
+    function home(Request $req)
+    {
+        $user = User::where('nickname',$req->nickname)->first();
+        if(!$user)
+            return redirect()->route('index');
+        return view("user.home",['user'=>$user]);
     }
 }

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','FineJadeXavier')
+@section('title',$user->nickname)
 @section('main')
         <div id="Main">
             <div class="sep20">
@@ -9,26 +9,27 @@
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
                             <td width="73" valign="top" align="center">
-                                <img src="//cdn.v2ex.com/avatar/dfa2/2bd5/274059_large.png?m=1517483107" class="avatar" border="0" align="default"/>
+                                <img src="{{ $user->avatar }}" class="avatar" border="0" align="default"/>
                                 <div class="sep10">
                                 </div>
                             </td>
                             <td width="10">
                             </td>
                             <td width="auto" valign="top" align="left">
-                                <div class="fr">
-                                    <input type="button" value="加入特别关注" onclick="if (confirm('确认要开始关注 salamanderMH？')) { location.href = '/follow/274059?once=27533'; }" class="super special button"/>
-                                    <div class="sep10">
-                                    </div>
-                                    <input type="button" value="Block" onclick="if (confirm('确认要屏蔽 salamanderMH？')) { location.href = '/block/274059?t=1528370558'; }" class="super normal button"/>
-                                </div>
-                                <h1 style="margin-bottom: 5px;">salamanderMH</h1>
-                                <span class="bigger">Salamander</span>
+                                {{--<div class="fr">--}}
+                                    {{--<input type="button" value="加入特别关注" onclick="if (confirm('确认要开始关注 salamanderMH？')) { location.href = '/follow/274059?once=27533'; }" class="super special button"/>--}}
+                                    {{--<div class="sep10">--}}
+                                    {{--</div>--}}
+                                    {{--<input type="button" value="Block" onclick="if (confirm('确认要屏蔽 salamanderMH？')) { location.href = '/block/274059?t=1528370558'; }" class="super normal button"/>--}}
+                                {{--</div>--}}
+                                <h1 style="margin-bottom: 5px;">{{ $user->nickname }}</h1>
+                                <span class="bigger">小萌新</span>
                                 <div class="sep10">
                                 </div>
                                 <span class="gray">
-							<li class="fa fa-time"></li>
-							 &nbsp; DEBUG 第 274059 号会员，加入于 2017-12-12 17:13:17 +08:00，今日活跃度排名 <a href="/top/dau">2437</a></span>
+							        <li class="fa fa-time"></li>
+							 &nbsp;     DEBUG 第 {{ $user->id }} 号会员，加入于 {{ $user->created_at }}
+                                </span>
                             </td>
                         </tr>
                     </table>
@@ -40,10 +41,7 @@
             </div>
             <div class="box">
                 <div class="cell_tabs">
-                    <div class="fl">
-                        <img src="//cdn.v2ex.com/avatar/dfa2/2bd5/274059_normal.png?m=1517483107" width="24" style="border-radius: 24px; margin-top: -2px;" border="0"/>
-                    </div>
-                    <a href="/member/salamandermh" class="cell_tab_current">salamanderMH 的所有提问</a>
+                    <p >{{$user->nickname}} 的所有提问</p>
                 </div>
                 <div class="cell item" style="">
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -64,7 +62,7 @@
                     </table>
                 </div>
                 <div class="inner">
-                    <span class="chevron">»</span><a href="/member/salamanderMH/topics">salamanderMH 创建的更多主题</a>
+                    <a href="/member/salamanderMH/topics">浏览 {{$user->nickname}} 创建的更多主题</a>
                 </div>
             </div>
             <div class="sep20">

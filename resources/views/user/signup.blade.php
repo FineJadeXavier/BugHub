@@ -59,10 +59,4 @@
         </div>
 @endsection()
 @section('js')
-    {{--输出报错信息--}}
-    @if (count($errors) > 0)
-        <script>
-            swal("{{ $errors->first() }}",'','error')
-        </script>
-    @endif
 @endsection()

@@ -26,7 +26,7 @@ class EditRequest extends FormRequest
         return [
             // 不支持用户名修改
 //            'nickname' => 'required|min:2|max:15',
-            'email' => 'required|max:50',
+            'email' => 'required|regex:/\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/',
         ];
     }
 
@@ -37,7 +37,7 @@ class EditRequest extends FormRequest
 //            'nickname.min' => '昵称不能小于2个字符！',
 //            'nickname.max' => '昵称不能大于15个字符！',
             'email.required' => '邮箱地址不能为空！',
-            'email.max' => '你的邮箱地址真的大于50个字符嘛？',
+            'email.regex' => '邮箱地址格式错误',
         ];
     }
 }
