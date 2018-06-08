@@ -79,6 +79,6 @@ class ArticleController extends Controller
      */
     public function destroy(Bug $bug)
     {
-        
+
     }
 }
