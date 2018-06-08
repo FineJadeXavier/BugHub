@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-use App\Models\Article;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\SigninRequest;
@@ -112,13 +111,11 @@ class UserController extends Controller
         return view("user.home",['user'=>$user]);
     }
 
-    function api_menbers()
+    //获取用户数量
+    function api()
     {
         return User::all()->count();
     }
 
-    function api_articles()
-    {
-        return Article::all()->count();
-    }
+
 }
