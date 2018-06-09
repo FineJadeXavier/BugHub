@@ -9,7 +9,7 @@ use App\Models\Article;
  *         php artisan scout:import "App\Models\Article"
  */
 Route::get('/search', function () {
-    dump(Article::search('php')->get()->toArray());
+    dump(Article::search('java')->get()->toArray());
     //    $first = Article::find(1);
 });
 
@@ -41,7 +41,7 @@ Route::get("/article/content/{id}", "TopicController@content")->name('article.co
 Route::get('/api/members/get',"UserController@api");
 Route::get('/api/articles/get',"TopicController@api");
 //获取文章数据
-Route::get('/api/{type}/{order}/{orderby}',"TopicController@index_get" );
+Route::get('/api/{type}/{orderby}/{order}',"TopicController@index_get" );
 
 //登录中间件
 Route::middleware('signin')->group(function(){

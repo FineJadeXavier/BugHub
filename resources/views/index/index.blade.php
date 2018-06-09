@@ -11,8 +11,9 @@
             <div class="cell" id="SecondaryTabs">
                 <a href="/go/nodejs" class="tab_current">最新问答</a> &nbsp; &nbsp;
                 <a href="/go/cloud">热门问答</a> &nbsp; &nbsp;
-                <a href="/go/bb">等待回答</a></div>
-            <div class="cell item" style=""    v-for="(article,index) in articles" :key="index" v-if="article">
+                <a href="/go/bb">等待回答</a>
+            </div>
+            <div class="cell item" style=""    v-for="(article,index) in articles" :key="index">
                 <table cellpadding="0" cellspacing="0" border="0" width="100%"  >
                     <tr >
                         <td width="48" valign="top" align="center"><a href="/member/183387594"><img src="//cdn.v2ex.com/avatar/7891/4952/200419_normal.png?m=1499852079" class="avatar" border="0" align="default" /></a></td>
@@ -22,7 +23,7 @@
                             <span class="topic_info">
                                 <div class="votes"></div>
                                 <a class="node" href="/go/gts" v-text="article.sorts"></a> &nbsp;•&nbsp;
-                                <strong><a href="/member/183387594" v-text="article.user.nickname"></a></strong>
+                                <strong><a href="/member/183387594"  v-text="article.user.nickname"></a></strong>
                                 &nbsp;•&nbsp; <span class="date">@{{ article.created_at | dateFilter }}</span> &nbsp;•&nbsp; 最后回复来自
                                 <strong><a href="/member/henmeiweide">henmeiweide</a></strong></span>
                         </td>
@@ -42,6 +43,6 @@
 @section('js')
     <script src="/js/index.js"></script>
     <script>
-        get_article('all','created_at','desc');
+        
     </script>
 @endsection()

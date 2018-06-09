@@ -17,14 +17,9 @@ class TopicController extends Controller
     function index_get(Request $req)
     {
         if($req->type == "all")
-            return Article::orderBy($req->order,$req->orderby)
-                ->with("user")
-                ->paginate(15);
+            return Article::orderBy($req->orderby,$req->order)->with("user")->paginate(15);
 
-        return Article::where("sorts",$req->type)
-            ->orderBy($req->order,$req->orderby)
-            ->with("user")
-            ->paginate(15);
+        return Article::where("sorts",$req->type)->orderBy($req->orderby,$req->order)->with("user")->paginate(15);
     }
 
     //文章详情页（内容页）
