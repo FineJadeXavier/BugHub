@@ -41,7 +41,7 @@ Route::get("/article/{id}", "ArticleController@index")->name('article.index');
 Route::get('/api/members/get',"UserController@api");
 Route::get('/api/articles/get',"TopicController@api");
 //获取文章数据
-Route::get('/api/{type}/{orderby}/{num}',"TopicController@get" );
+Route::get('/api/{type}/{orderby}',"TopicController@get" );
 
 //登录中间件
 Route::middleware('signin')->group(function(){

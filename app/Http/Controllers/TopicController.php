@@ -14,16 +14,17 @@ class TopicController extends Controller
     }
 
     //获取文章
-    function get(Request $req)
+    function index_get(Request $req)
     {
         if($req->type == "all")
             return Article::orderBy($req->orderby)
                 ->with("user")
-                ->get($req->num);
+
+                ->get();
 
         return Article::where("sorts",$req->type)
             ->with("user")
-            ->take($req->num)
+            ->take()
             ->get();
     }
 
