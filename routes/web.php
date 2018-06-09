@@ -24,7 +24,6 @@ Route::post('/signin', 'UserController@signin')->name('user.signin.p');
 Route::get('/signup', function () {return view('user.signup');})->name('user.signup');
 Route::post('/signup', 'UserController@signup')->name('user.signup.p');
 
-
 //编辑文章
 Route::get('/article/edit',function () {return view('article.edit');} )->name('article.edit');
 

@@ -39,7 +39,8 @@ class UserController extends Controller
         session([
             'id' => $user->id,
             'nickname' => $user->nickname,
-            'avatar' => $user->avatar
+            'avatar' => $user->avatar,
+            'email' => $user->email,
         ]);
         //登录跳转
         return redirect()->route('index');
@@ -68,7 +69,8 @@ class UserController extends Controller
         session([
             'id' => $user->id,
             'nickname' => $user->nickname,
-            'avatar' => $user->avatar
+            'avatar' => $user->avatar,
+            'email' => $user->email,
         ]);
         return redirect()->route('index');
     }
