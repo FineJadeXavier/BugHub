@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','FineJadeXavier')
+@section('title',session('nickname'))
 @section('main')
         <div id="Main">
             <div class="sep20">
@@ -13,10 +13,10 @@
                         <table cellpadding="5" cellspacing="0" border="0" width="100%">
                             <tr>
                                 <td width="120" align="right">
-                                    <img src="//cdn.v2ex.com/gravatar/2f7b329e7e4f8bfc774e6ef2ddfa2357?s=24&d=retro" class="avatar" border="0" align="default" style="max-width: 24px; max-height: 24px;"/>
+                                    <img src="{{ session('avatar') }}" class="avatar" border="0" align="default" style="max-width: 24px; max-height: 24px;"/>
                                 </td>
                                 <td width="auto" align="left">
-                                    V2EX 第 321204 号会员
+                                    V2EX 第 {{ session('id') }} 号会员
                                 </td>
                             </tr>
                             <tr>
@@ -24,7 +24,7 @@
                                     用户名
                                 </td>
                                 <td width="auto" align="left">
-                                    FineJadeXavier
+                                    {{ session('nickname') }}
                                 </td>
                             </tr>
                             <tr>
@@ -32,7 +32,7 @@
                                     电子邮箱
                                 </td>
                                 <td width="auto" align="left">
-                                    <code>finejadexavier@gmail.com</code>
+                                    <code>{{ session('email') }}</code>
                                 </td>
                             </tr>
                         </table>
