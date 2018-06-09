@@ -292,4 +292,9 @@
         swal("{{ $errors->first() }}",'','error')
     </script>
 @endif
+@if(session('success'))
+    <script>
+        swal("{{ session('success') }}",'','success')
+    </script>
+@endif
 @yield('js')

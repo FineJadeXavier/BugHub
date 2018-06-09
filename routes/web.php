@@ -24,8 +24,7 @@ Route::post('/signin', 'UserController@signin')->name('user.signin.p');
 Route::get('/signup', function () {return view('user.signup');})->name('user.signup');
 Route::post('/signup', 'UserController@signup')->name('user.signup.p');
 
-//编辑文章
-Route::get('/article/edit',function () {return view('article.edit');} )->name('article.edit');
+
 
 //编辑个人资料
 Route::get('/user/edit/',function () {return view('user.edit');} )->name('user.edit');
@@ -48,6 +47,11 @@ Route::middleware('signin')->group(function(){
 
     //编辑个人资料
 //    Route::get('/user/edit/', 'UserController@edit')->name('user.edit');
+
+
+    //编辑文章
+    Route::get('/article/edit',"TopicController@edit")->name('article.edit');
+    Route::post('/article/edit',"TopicController@edit_post")->name('article.edit.post');
 
     //发布文章
     Route::get('/article/new',function () {return view('article.write');} )->name('article.new');

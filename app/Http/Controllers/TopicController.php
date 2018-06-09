@@ -22,5 +22,15 @@ class TopicController extends Controller
         $topic = new Article();
         $topic -> user_id = session('id');
         $topic -> sorts = $req->type;
+        $topic -> title = $req->title;
+        $topic -> content = $req->content;
+        $topic -> save();
+        return back()->with("success",'发布成功');
+    }
+
+    //编辑文章
+    function edit_post(TopicRequest $req)
+    {
+
     }
 }
