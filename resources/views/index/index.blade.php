@@ -23,8 +23,7 @@
                                 <div class="votes"></div>
                                 <a class="node" href="/go/gts" v-text="article.sorts"></a> &nbsp;•&nbsp;
                                 <strong><a href="/member/183387594" v-text="article.user.nickname"></a></strong>
-                                &nbsp;•&nbsp; 4 小时 34 分钟前 &nbsp;•&nbsp; 最后回复来自
-                                @{{ article.user.nickname }}
+                                &nbsp;•&nbsp; <span class="date">@{{ article.created_at | dateFilter }}</span> &nbsp;•&nbsp; 最后回复来自
                                 <strong><a href="/member/henmeiweide">henmeiweide</a></strong></span>
                         </td>
                         <td width="70" align="right" valign="middle">
@@ -41,20 +40,8 @@
     </div>
 @endsection()
 @section('js')
+    <script src="/js/index.js"></script>
     <script>
-        let data = new Vue({
-            el:"#article",
-            data:{
-                articles:''
-            },
-            created(){
-                fetch("/api/PHP/created_at/10")
-                    .then(response=>response.json())
-                    .then(json=>{
-                        this.articles = json;
-                        this.articles.time = date.getTime(json.created_at);
-                    })
-            }
-        })
+        get_article('PHP',"created_at");
     </script>
 @endsection()
