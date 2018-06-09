@@ -19,13 +19,12 @@ class TopicController extends Controller
         if($req->type == "all")
             return Article::orderBy($req->orderby)
                 ->with("user")
-
-                ->get();
+                ->paginate(15);
 
         return Article::where("sorts",$req->type)
+            ->orderBy($req->order,$req->orderby)
             ->with("user")
-            ->take()
-            ->get();
+            ->paginate(15);
     }
 
     //发布文章

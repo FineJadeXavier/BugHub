@@ -42,6 +42,6 @@
 @section('js')
     <script src="/js/index.js"></script>
     <script>
-        get_article('PHP',"created_at");
+        get_article('all','created_at','desc');
     </script>
 @endsection()
