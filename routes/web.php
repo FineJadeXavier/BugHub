@@ -31,7 +31,7 @@ Route::post('/signup', 'UserController@signup')->name('user.signup.p');
 Route::get("/user/home/{nickname}", "UserController@home")->name('user.home');
 
 //文章详情（内容页）
-Route::get("/article/{id}", "ArticleController@index")->name('article.index');
+Route::get("/article/content/{id}", "TopicController@content")->name('article.content');
 
 /*
  * 获取社区运行状况
