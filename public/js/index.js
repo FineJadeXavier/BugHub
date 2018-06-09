@@ -1,4 +1,4 @@
-    let data = new Vue({
+    let data_index = new Vue({
         el:"#article",
         data:{
             articles:''
@@ -10,7 +10,7 @@
                     this.articles = json.data;
                 })
         },
-        methods(){
+        methods:{
             getdata:function (url){
                 fetch(url)
                     .then(response=>response.json())

@@ -8,10 +8,10 @@
     </style>
     <div id="Main">
         <div class="sep20"></div>
-        <div class="box" id="article">
+        <div class="box" id="article" >
             <div class="inner" id="Tabs">
-                <a href="#" class="tab_current" onclick="getdata('PHP')">PHP</a>
-                <a href="#" class="tab" onclick="getdata('Java')">Java</a>
+                <a href="#" class="tab_current" @click="get('PHP')">PHP</a>
+                <a href="#" class="tab" @click="get('Java')">Java</a>
             </div>
             <div class="cell" id="SecondaryTabs">
                 <a href="#" class="tab_current">最新问答</a> &nbsp; &nbsp;
@@ -56,10 +56,14 @@
     <script src="/js/index.js"></script>
     <script>
         let tags = new Vue({
-            el:"#Tags",
-            methods(){
-                get:function(Type){
-                    
+            el:"#Tabs",
+            data:{
+
+            },
+            methods:{
+                get: function (Type) {
+                    // data_index.getdata("/api/"+Type+"/created_at/desc")
+                    console.log(Type);
                 }
             }
         })
