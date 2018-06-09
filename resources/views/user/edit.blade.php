@@ -95,7 +95,7 @@
                                     新密码
                                 </td>
                                 <td width="auto" align="left">
-                                    <input type="password" class="sl" name="password_new" value=""/>
+                                    <input type="password" class="sl" name="password" value=""/>
                                 </td>
                             </tr>
                             <tr>

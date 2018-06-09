@@ -84,10 +84,16 @@ class UserController extends Controller
         //从数据库获取用户信息
         $user = User::where('id',session('id'))->first();
 
+        if (!Hash::check($req->password, $user->password))
+            //用户密码不存在，返回
+            return back()->withErrors('密码错误！');
+
         //修改用户密码
         $user->password = Hash::make($req->password);
 
         $user->save();
+
+        return back()->with("success",'修改成功！');
     }
 
     public function edit_email(EditEmailRequest $req)

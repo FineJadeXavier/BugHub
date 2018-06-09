@@ -33,11 +33,11 @@ class EditEmailRequest extends FormRequest
     public function messages()
     {
         return [
-            'email_current.exists' => '验证邮箱不匹配！',
+            'email_current.exists' => '当前邮箱地址不匹配！',
             'email.required' => '新邮箱地址已存在！',
             'email.email' => '新邮箱地址格式不正确！',
             'email.unique' => '新邮箱地址已存在！',
-            'email_again.same' => '新邮箱地址不相同！',
+            'email_again.same' => '再次输入不相同！',
         ];
     }
 }
