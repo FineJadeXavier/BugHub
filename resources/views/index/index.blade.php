@@ -1,6 +1,11 @@
 @extends('layouts.master')
 @section('title','首页')
 @section('main')
+    <style>
+        .count_livid{
+            background: #aab0c6 !important;
+        }
+    </style>
     <div id="Main">
         <div class="sep20"></div>
         <div class="box" id="article">
@@ -16,19 +21,27 @@
             <div class="cell item" style=""    v-for="(article,index) in articles" :key="index">
                 <table cellpadding="0" cellspacing="0" border="0" width="100%"  >
                     <tr >
-                        <td width="48" valign="top" align="center"><a href="/member/183387594"><img src="//cdn.v2ex.com/avatar/7891/4952/200419_normal.png?m=1499852079" class="avatar" border="0" align="default" /></a></td>
+                        <td width="48" valign="top" align="center">
+                            <a :href="'/user/home/'+article.user.nickname">
+                                <img :src="article.user.avatar" class="avatar" border="0" align="default" width="50"/>
+                            </a>
+                        </td>
                         <td width="10"></td>
-                        <td width="auto" valign="middle"><span class="item_title"><a href="/t/461098#reply4" v-text="article.title"></a></span>
+                        <td width="auto" valign="middle"><span class="item_title">
+                                <a :href="'/article/content/' + article.id"  v-text="article.title"></a>
+                            </span>
                             <div class="sep5"></div>
                             <span class="topic_info">
                                 <div class="votes"></div>
                                 <a class="node" href="/go/gts" v-text="article.sorts"></a> &nbsp;•&nbsp;
-                                <strong><a href="/member/183387594"  v-text="article.user.nickname"></a></strong>
-                                &nbsp;•&nbsp; <span class="date">@{{ article.created_at | dateFilter }}</span> &nbsp;•&nbsp; 最后回复来自
-                                <strong><a href="/member/henmeiweide">henmeiweide</a></strong></span>
+                                <strong>
+                                    <a href="/member/183387594"  v-text="article.user.nickname"></a>
+                                </strong>
+                                &nbsp;•&nbsp; <span class="date">@{{ article.created_at | dateFilter }}</span>
+                            </span>
                         </td>
                         <td width="70" align="right" valign="middle">
-                            <a href="/t/461098#reply4" class="count_livid" v-text="article.reply"></a>
+                            <a  :href="'/article/content/'+article.id" class="count_livid"  v-text="article.reply"></a>
                         </td>
                     </tr>
                 </table>
@@ -43,6 +56,6 @@
 @section('js')
     <script src="/js/index.js"></script>
     <script>
-        
+
     </script>
 @endsection()
