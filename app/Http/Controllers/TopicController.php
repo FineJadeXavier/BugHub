@@ -17,7 +17,7 @@ class TopicController extends Controller
     function index_get(Request $req)
     {
         if($req->type == "all")
-            return Article::orderBy($req->orderby)
+            return Article::orderBy($req->order,$req->orderby)
                 ->with("user")
                 ->paginate(15);
 

@@ -5,7 +5,7 @@ function get_article(type,order,orderby) {
             articles:''
         },
         created(){
-            fetch("/api/"+type+"/"+orderby+"/"+order)
+            fetch("/api/"+type+"/"+order+"/"+orderby)
                 .then(response=>response.json())
                 .then(json=>{
                     this.articles = json;
