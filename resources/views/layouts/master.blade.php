@@ -259,7 +259,7 @@
                             swal({
                                 title: '正在登出!',
                                 html: '正在清除临时数据 <strong></strong> KB.',
-                                timer: 2000,
+                                timer: 1500,
                                 onOpen: () => {
                                     swal.showLoading()
                                     timerInterval = setInterval(() => {
@@ -290,6 +290,11 @@
 @if (count($errors) > 0)
     <script>
         swal("{{ $errors->first() }}",'','error')
+    </script>
+@endif
+@if(session('success'))
+    <script>
+        swal("{{ session('success') }}",'','success')
     </script>
 @endif
 @yield('js')

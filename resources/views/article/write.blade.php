@@ -53,10 +53,11 @@
                             <option value="PHP">PHP</option>
                         </select>
                         <div class="fr">
-                            <button type="submit" class="super normal button">
+                            <button type="button" class="super normal button" id="btn">
                                 <img src="/write.png" alt="" style="width: 16px; vertical-align: middle;  ">
                                 &nbsp;发布主题
                             </button>
+                            <input type="submit" hidden id="submit">
                         </div>
                         <div class="sep20"></div>
                     </div>
@@ -68,4 +69,32 @@
             <div class="sep20"></div>
 @endsection()
 @section('js')
+    {{--发布文章--}}
+                <script>
+                    $('#btn').click(function(){
+                        let timerInterval
+                        swal({
+                            title: '发布中~~',
+                            html: '正在上传数据 <span></span> KB.',
+                            timer: 1500,
+                            onOpen: () => {
+                                swal.showLoading()
+                                timerInterval = setInterval(() => {
+                                    swal.getContent().querySelector('span')
+                                        .textContent = swal.getTimerLeft()
+                                }, 100)
+                            },
+                            onClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        }).then((result) => {
+                            if (
+                                // Read more about handling dismissals
+                                result.dismiss === swal.DismissReason.timer
+                            ) {
+                                $("#submit").click();
+                            }
+                        })
+                    })
+                </script>
 @endsection()

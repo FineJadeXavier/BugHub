@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Http\Requests\TopicRequest;
 use App\Models\Article;
 
@@ -13,6 +13,20 @@ class TopicController extends Controller
         return Article::all()->count();
     }
 
+    //获取文章
+    function get(Request $req)
+    {
+        if($req->type == "all")
+            return Article::orderBy($req->orderby)
+                ->with("user")
+                ->get($req->num);
+
+        return Article::where("sorts",$req->type)
+            ->with("user")
+            ->take($req->num)
+            ->get();
+    }
+
     //发布文章
     function write(TopicRequest $req)
     {
@@ -22,5 +36,15 @@ class TopicController extends Controller
         $topic = new Article();
         $topic -> user_id = session('id');
         $topic -> sorts = $req->type;
+        $topic -> title = $req->title;
+        $topic -> content = $req->content;
+        $topic -> save();
+        return back()->with("success",'发布成功');
+    }
+
+    //编辑文章
+    function edit_post(TopicRequest $req)
+    {
+
     }
 }
