@@ -24,6 +24,7 @@
 
 - 编辑器图片默认会上传到 public/uploads/content 目录下；
 - 编辑器相关功能配置位于 config/wang-editor.php 文件中。
+- 使用之前，先 php artisan vendor:publish --force
 
 ##### 实例
     <div class="wangEdit">

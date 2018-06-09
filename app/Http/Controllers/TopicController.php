@@ -27,6 +27,14 @@ class TopicController extends Controller
             ->paginate(15);
     }
 
+    //文章详情页（内容页）
+    public function content($id)
+    {
+        $article = Article::where('id',$id)->first();
+
+        return view('article.content',['article' => $article]);
+    }
+
     //发布文章
     function write(TopicRequest $req)
     {
