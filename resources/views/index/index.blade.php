@@ -27,7 +27,8 @@
                             </a>
                         </td>
                         <td width="10"></td>
-                        <td width="auto" valign="middle"><span class="item_title">
+                        <td width="auto" valign="middle">
+                            <span class="item_title">
                                 <a :href="'/article/content/' + article.id"  v-text="article.title"></a>
                             </span>
                             <div class="sep5"></div>
