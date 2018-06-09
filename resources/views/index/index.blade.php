@@ -12,7 +12,7 @@
                 <a href="/go/nodejs" class="tab_current">最新问答</a> &nbsp; &nbsp;
                 <a href="/go/cloud">热门问答</a> &nbsp; &nbsp;
                 <a href="/go/bb">等待回答</a></div>
-            <div class="cell item" style=""    v-for="(article,index) in articles" :key="index">
+            <div class="cell item" style=""    v-for="(article,index) in articles" :key="index" v-if="article">
                 <table cellpadding="0" cellspacing="0" border="0" width="100%"  >
                     <tr >
                         <td width="48" valign="top" align="center"><a href="/member/183387594"><img src="//cdn.v2ex.com/avatar/7891/4952/200419_normal.png?m=1499852079" class="avatar" border="0" align="default" /></a></td>
@@ -42,6 +42,6 @@
 @section('js')
     <script src="/js/index.js"></script>
     <script>
-        get_article('PHP',"created_at");
+        get_article('all','created_at','desc');
     </script>
 @endsection()

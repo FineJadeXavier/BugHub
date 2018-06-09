@@ -47,7 +47,10 @@
 - mbstring
 
 #### 如何使用
+- 生成索引
 
+        php artisan scout:import "App\Models\Article"
+    
 - 把要搜索的词给 Article::search() 处理
 
 #### 实例 搜索 'php'

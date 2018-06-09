@@ -1,11 +1,11 @@
-function get_article(type,orderby) {
+function get_article(type,order,orderby) {
     let data = new Vue({
         el:"#article",
         data:{
             articles:''
         },
         created(){
-            fetch("/api/"+type+"/"+orderby+"/")
+            fetch("/api/"+type+"/"+order+"/"+orderby)
                 .then(response=>response.json())
                 .then(json=>{
                     this.articles = json;
