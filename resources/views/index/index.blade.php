@@ -10,13 +10,11 @@
         <div class="sep20"></div>
         <div class="box" id="article">
             <div class="inner" id="Tabs">
-                <a href="/?tab=tech" class="tab_current">技术</a>
-                <a href="/?tab=creative" class="tab">创意</a>
+                <a href="#" class="tab_current" onclick="getdata('PHP')">PHP</a>
+                <a href="#" class="tab" onclick="getdata('Java')">Java</a>
             </div>
             <div class="cell" id="SecondaryTabs">
-                <a href="/go/nodejs" class="tab_current">最新问答</a> &nbsp; &nbsp;
-                <a href="/go/cloud">热门问答</a> &nbsp; &nbsp;
-                <a href="/go/bb">等待回答</a>
+                <a href="#" class="tab_current">最新问答</a> &nbsp; &nbsp;
             </div>
             <div class="cell item" style=""    v-for="(article,index) in articles" :key="index">
                 <table cellpadding="0" cellspacing="0" border="0" width="100%"  >
@@ -57,6 +55,13 @@
 @section('js')
     <script src="/js/index.js"></script>
     <script>
-
+        let tags = new Vue({
+            el:"#Tags",
+            methods(){
+                get:function(Type){
+                    
+                }
+            }
+        })
     </script>
 @endsection()
