@@ -22,7 +22,7 @@ return [
      *
      * 参考：https://www.kancloud.cn/wangfupeng/wangeditor3/335780
      */
-    'uploadImgShowBase64' => 'true',  // true - 使用 base64 编码图片；当为 false 时会使用下面服务器上传图片
+    'uploadImgShowBase64' => 'false',  // true - 使用 base64 编码图片；当为 false 时会使用下面服务器上传图片
     'uploadImgServer' => '/laravel-wang-editor/upload',  // 上传图片的服务器端接口地址
 
     /**

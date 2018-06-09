@@ -25,7 +25,7 @@ class TopicRequest extends FormRequest
     {
         return [
             'type'=>'required',
-            'content'=>'required|min:10|max:3000',
+            'content'=>'required|min:10',
             'title' => 'required|min:5|max:30',
         ];
     }
@@ -41,7 +41,6 @@ class TopicRequest extends FormRequest
             'title.max' => '标题字数太多！',
 
             'content.min' => '内容字数太少！',
-            'content.max' => '内容字数太多！',
         ];
     }
 }

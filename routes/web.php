@@ -16,6 +16,7 @@ Route::get('/search', function () {
 //首页
 Route::get('/', function () { return view('index.index');})->name('index');
 
+
 //登录
 Route::get('/signin', function () {return view('user.signin');})->name('user.signin');
 Route::post('/signin', 'UserController@signin')->name('user.signin.p');
@@ -32,12 +33,12 @@ Route::get("/user/home/{nickname}", "UserController@home")->name('user.home');
 /*
  * 获取社区运行状况
  * 获取注册人数
- * 获取文章人数
+ * 获取文章数
  */
 Route::get('/api/members/get',"UserController@api");
-
 Route::get('/api/articles/get',"TopicController@api");
-
+//获取文章数据
+Route::get('/api/{type}/{orderby}/{num}',"TopicController@get" );
 
 //登录中间件
 Route::middleware('signin')->group(function(){
