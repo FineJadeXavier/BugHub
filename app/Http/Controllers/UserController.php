@@ -83,7 +83,7 @@ class UserController extends Controller
         $user = User::where('id',session('id'))->first();
         //修改用户信息
         // 不支持用户名修改
-        // $user->nickname = $req->nickname; 
+        // $user->nickname = $req->nickname;
         $user->email = $req->email;
         $user->save();
     }

@@ -35,7 +35,7 @@
                     <td width="570" align="right" style="padding-top: 2px;">
                         <a href="/" class="top">首页</a>&nbsp;&nbsp;&nbsp;
                         <a href="{{ Route('user.home',['nickname'=>session('nickname')]) }}" class="top">{{ session('nickname') }}</a>&nbsp;&nbsp;&nbsp;
-                        <a href="/settings" class="top">设置</a>&nbsp;&nbsp;&nbsp;
+                        <a href="{{ Route('user.edit') }}" class="top">设置</a>&nbsp;&nbsp;&nbsp;
                         <a href="#;" id="signout" @click="signout" class="top">登出</a>
                     </td>
                     @endif
