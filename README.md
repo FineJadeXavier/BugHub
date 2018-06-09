@@ -39,6 +39,7 @@
 ### **全文索引 + 分词搜索**
 
 - 用的TNTSearch + jieba分词
+- 具体参看 https://baijunyao.com/article/154
 
 #### 依赖以下PHP扩展
 
