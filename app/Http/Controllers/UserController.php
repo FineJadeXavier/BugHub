@@ -4,8 +4,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\SigninRequest;
 use App\Http\Requests\SignupRequest;
-use App\Http\Requests\EditRequest;
-use App\Http\Requests\ResetPwdRequest;
+use App\Http\Requests\EditPWDRequest;
+use App\Http\Requests\EditEmailRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -79,18 +79,7 @@ class UserController extends Controller
      *  编辑用户信息
      *
      */
-    public function edit(EditRequest $req)
-    {
-        //从数据库获取用户信息
-        $user = User::where('id',session('id'))->first();
-        //修改用户信息
-        // 不支持用户名修改
-        // $user->nickname = $req->nickname;
-        $user->email = $req->email;
-        $user->save();
-    }
-
-    public function resetpwd(ResetPwdRequest $req)
+    public function edit_pwd(EditPWDRequest $req)
     {
         //从数据库获取用户信息
         $user = User::where('id',session('id'))->first();
@@ -100,6 +89,20 @@ class UserController extends Controller
 
         $user->save();
     }
+
+    public function edit_email(EditEmailRequest $req)
+    {
+        //从数据库获取用户信息
+        $user = User::where('id',session('id'))->first();
+
+        //修改用户邮箱地址
+        $user->email = $req->email;
+
+        $user->save();
+
+        return back()->with("success",'修改成功！');
+    }
+
 
     /*
      * 个人中心

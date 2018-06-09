@@ -45,7 +45,8 @@ Route::middleware('signin')->group(function(){
 
     //编辑个人资料
     Route::get('/user/edit',function () {return view('user.edit');} )->name('user.edit');
-    Route::post('/user/edit','UserController@edit')->name('user.edit.p');
+    Route::post('/user/edit_p','UserController@edit_pwd')->name('user.edit.pwd');
+    Route::post('/user/edit_e','UserController@edit_email')->name('user.edit.email');
 
     //发布文章
     Route::get('/article/new',function () {return view('article.write');} )->name('article.new');

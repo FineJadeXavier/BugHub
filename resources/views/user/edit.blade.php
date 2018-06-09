@@ -52,7 +52,7 @@
                                 当前头像
                             </td>
                             <td width="auto" align="left">
-                                <img src="//cdn.v2ex.com/gravatar/2f7b329e7e4f8bfc774e6ef2ddfa2357?s=73&d=retro" class="avatar" border="0" align="default"/>
+                                <img src="{{ session('avatar') }}" class="avatar" border="0" align="default"/>
                             </td>
                         </tr>
                     </table>
@@ -79,8 +79,9 @@
                     更改密码
                 </div>
                 <div class="inner">
-                    <form method="post" action="/settings/password">
+                    <form method="post" action="{{ Route('user.edit.pwd') }}">
                         <table cellpadding="5" cellspacing="0" border="0" width="100%">
+                            @csrf
                             <tr>
                                 <td width="120" align="right">
                                     当前密码
@@ -99,7 +100,7 @@
                             </tr>
                             <tr>
                                 <td width="120" align="right">
-                                    再次输入新密码
+                                    再次输入密码
                                 </td>
                                 <td width="auto" align="left">
                                     <input type="password" class="sl" name="password_again" value=""/>
@@ -118,6 +119,54 @@
             </div>
             <div class="sep20">
             </div>
+            <div class="box">
+                <div class="cell">
+                    <div class="fr">
+                        <span class="fade">如果你不打算更改邮箱地址，请留空以下区域</span>
+                    </div>
+                    更改邮箱地址
+                </div>
+                <div class="inner">
+                    <form method="post" action="{{ Route('user.edit.email') }}">
+                        <table cellpadding="5" cellspacing="0" border="0" width="100%">
+                            @csrf
+                            <tr>
+                                <td width="120" align="right">
+                                    当前邮箱地址
+                                </td>
+                                <td width="auto" align="left">
+                                    <input type="text" class="sl" name="email_current" value=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="120" align="right">
+                                    新邮箱地址
+                                </td>
+                                <td width="auto" align="left">
+                                    <input type="text" class="sl" name="email" value=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="120" align="right">
+                                    再次输入邮箱地址
+                                </td>
+                                <td width="auto" align="left">
+                                    <input type="text" class="sl" name="email_again" value=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="120" align="right">
+                                </td>
+                                <td width="auto" align="left">
+                                    <input type="hidden" value="58278" name="once"/><input type="submit" class="super normal button" value="更改邮箱地址"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="sep20">
         </div>
 @endsection()
 @section('js')
