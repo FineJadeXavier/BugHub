@@ -30,6 +30,9 @@ Route::post('/signup', 'UserController@signup')->name('user.signup.p');
 //个人中心
 Route::get("/user/home/{nickname}", "UserController@home")->name('user.home');
 
+//文章详情（内容页）
+Route::get("/article/{id}", "ArticleController@index")->name('article.index');
+
 /*
  * 获取社区运行状况
  * 获取注册人数
