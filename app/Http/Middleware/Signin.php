@@ -17,7 +17,7 @@ class Signin
     {
         if(!session('id'))
         {
-            return redirect()->route('login');
+            return redirect()->route('user.signin');
         }
         return $next($request);
     }

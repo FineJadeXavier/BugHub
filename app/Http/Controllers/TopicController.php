@@ -13,20 +13,27 @@ class TopicController extends Controller
         return Article::all()->count();
     }
 
-    //获取文章
-    function index_get(Request $req)
+    //搜索文章
+    function search(Request $req)
     {
-        if($req->type == "all")
-            return Article::orderBy($req->orderby,$req->order)->with("user")->paginate(15);
+        $articles =  Article::search($req->key)->paginate(10);
+        return view('index.index',['articles'=>$articles]);
+    }
 
-        return Article::where("sorts",$req->type)->orderBy($req->orderby,$req->order)->with("user")->paginate(15);
+    //获取文章
+    function index(Request $req)
+    {
+        if(!$req->type)
+            $articles =  Article::orderBy('created_at','desc')->with("user")->paginate(10);
+        else
+            $articles =  Article::where('sorts',$req->type)->orderBy('created_at','desc')->with("user")->paginate(10);
+        return view('index.index',['articles'=>$articles]);
     }
 
     //文章详情页（内容页）
     public function content($id)
     {
         $article = Article::where('id',$id)->first();
-
         return view('article.content',['article' => $article]);
     }
 

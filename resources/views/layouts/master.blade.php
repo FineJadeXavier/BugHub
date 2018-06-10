@@ -14,6 +14,11 @@
     <link href="https://www.v2ex.com/static/css/jquery.textcomplete.css?v=5a041d39010ded8724744170cea6ce8d" rel="stylesheet" />
     <link href="https://www.v2ex.com/static/js/select2/select2.css?v=2621fe97ae1aabca8661d60000147412" rel="stylesheet" />
     <link href="https://www.v2ex.com/static/js/selectboxit/selectboxit.css?v=5dc55d3860ef80ef1875d6800a5fbfa3" rel="stylesheet" >
+    <style>
+        #q{
+            width: 260px;
+        }
+    </style>
 </head>
 <body>
 <div id="Top">
@@ -23,7 +28,13 @@
                 <tr>
                     <td width="110" align="left"><a href="/" name="top" title="way to explore"><div id="Logo" style="background-image: url('/logo.png')"></div></a></td>
                     <td width="auto" align="left">
-                        <div id="Search"><form action="https://www.google.com" onsubmit="return dispatch()" target="_blank"><div id="qbar"><input type="text" maxlength="40" name="q" id="q" value="" onfocus="$('#qbar').addClass('qbar_focus')" onblur="$('#qbar').removeClass('qbar_focus')"/></div></form></div>
+                        <div id="Search">
+                            <form action="{{ Route('search') }}"  method="get">
+                                <div id="qbar">
+                                    <input type="text" maxlength="40" placeholder="文章id 分类 标题 内容。回车搜索" name="key" id="q" value="" onfocus="$('#qbar').addClass('qbar_focus')" onblur="$('#qbar').removeClass('qbar_focus')"/>
+                                </div>
+                            </form>
+                        </div>
                     </td>
                     @if(!session('id'))
                     <td width="570" align="right" style="padding-top: 2px;">
@@ -58,7 +69,8 @@
                 </div>
                 <div class="inner">
                     <div class="sep5"></div>
-                    <div align="center"><a href="/signup" class="super normal button">现在注册</a>
+                    <div align="center">
+                        <a href="/signup" class="super normal button">现在注册</a>
                         <div class="sep5"></div>
                         <div class="sep10"></div>
                         已注册用户请 &nbsp;<a href="/signin">登录</a></div>
@@ -181,7 +193,9 @@
                 <span> · </span>
                 <a href="/about" class="dark" target="_self">反馈</a>
                 <span> · </span>
-                <a href="https://github.com/FineJadeXavier/debug" class="dark" target="_blank" title="GitHub"><img src="/github.png" alt="GitHub" style="width: 16px;position: relative;top: 2px;"></a>
+                <a href="https://github.com/FineJadeXavier/debug" class="dark" target="_blank" title="GitHub">
+                    <img src="/github.png" alt="GitHub" style="width: 16px;position: relative;top: -2px;">
+                </a>
             </strong>
         </div>
     </div>
