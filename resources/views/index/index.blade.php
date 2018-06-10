@@ -92,7 +92,7 @@
                             <div class="sep5"></div>
                             <span class="topic_info">
                                 <div class="votes"></div>
-                                <a class="node" href="/go/gts">{{ $v->sorts }}</a> &nbsp;•&nbsp;
+                                <a class="node" href="/search?key={{ $article->sorts}}">{{ $v->sorts }}</a> &nbsp;•&nbsp;
                                 <strong>
                                     <a href="/user/home/{{ $v->user->nickname }}">{{ $v->user->nickname }}</a>
                                 </strong>

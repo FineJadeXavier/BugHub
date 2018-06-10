@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\TopicRequest;
 use App\Models\Article;
-
+use App\Models\Reply;
 class TopicController extends Controller
 {
     //获取话题数量
@@ -33,8 +33,14 @@ class TopicController extends Controller
     //文章详情页（内容页）
     public function content($id)
     {
+
         $article = Article::where('id',$id)->first();
-        return view('article.content',['article' => $article]);
+        //加一次阅读
+        $article->views = $article->views+1;
+        $article -> save();
+        //取出评论
+        $reply = Reply::where("article_id",$article->id)->get();
+        return view('article.content',['article' => $article,'reply'=>$reply]);
     }
 
     //发布文章

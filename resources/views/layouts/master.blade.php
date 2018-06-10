@@ -194,7 +194,7 @@
                 <a href="/about" class="dark" target="_self">反馈</a>
                 <span> · </span>
                 <a href="https://github.com/FineJadeXavier/debug" class="dark" target="_blank" title="GitHub">
-                    <img src="/github.png" alt="GitHub" style="width: 16px;position: relative;top: -2px;">
+                    <img src="/github.png" alt="GitHub" style="width: 16px;position: relative;top: 2px;">
                 </a>
             </strong>
         </div>

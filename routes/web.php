@@ -3,19 +3,14 @@ use Illuminate\Support\Facades\Route;
 
 //首页
 Route::get('/', "TopicController@index")->name('index');
-
 //搜索
 Route::get('/search', "TopicController@search")->name('search');
-
-
 //登录
 Route::get('/signin', function () {return view('user.signin');})->name('user.signin');
 Route::post('/signin', 'UserController@signin')->name('user.signin.p');
-
 //注册
 Route::get('/signup', function () {return view('user.signup');})->name('user.signup');
 Route::post('/signup', 'UserController@signup')->name('user.signup.p');
-
 //文章详情（内容页）
 Route::get("/article/content/{id}", "TopicController@content")->name('article.content');
 
