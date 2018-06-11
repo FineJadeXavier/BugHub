@@ -6,7 +6,7 @@
             </div>
             <div class="box">
                 <div class="header">
-                    <a href="/">V2EX</a><span class="chevron">&nbsp;›&nbsp;</span> 设置
+                    <a href="/">DEBUG</a><span class="chevron">&nbsp;›&nbsp;</span> 设置
                 </div>
                 <div class="inner">
                     <form method="post" action="/settings">
@@ -16,7 +16,7 @@
                                     <img src="{{ session('avatar') }}" class="avatar" border="0" align="default" style="max-width: 24px; max-height: 24px;"/>
                                 </td>
                                 <td width="auto" align="left">
-                                    V2EX 第 {{ session('id') }} 号会员
+                                    DEBUG 第 {{ session('id') }} 号会员
                                 </td>
                             </tr>
                             <tr>
