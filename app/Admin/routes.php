@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Routing\Router;
 
 Admin::registerAuthRoutes();
@@ -11,5 +10,6 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
-
+    $router->resource('articles', ArticleController::class);
+    $router->resource('users', UserController::class);
 });
