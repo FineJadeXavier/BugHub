@@ -27,6 +27,10 @@ class TopicController extends Controller
     {
         $article = Article::where('id',$id)->first();
 
+        //判断文章是否存在
+        if(!$article)
+            return redirect()->route('index');
+
         return view('article.content',['article' => $article]);
     }
 
