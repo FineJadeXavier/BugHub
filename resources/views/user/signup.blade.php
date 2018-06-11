@@ -13,7 +13,7 @@
                                 <td width="auto" align="left">
                                     <input type="text" class="sls" name="nickname" value="" autocomplete="off" autocorrect="off" spellcheck="false" autocapitalize="off" required="required" />
                                     <div class="sep5"></div>
-                                    <span class="fade">大小写字母，数字，中文和下划线，长度3-15</span>
+                                    <span class="fade">大小写字母，数字，下划线，长度3-15</span>
                                 </td>
                             </tr>
                             <tr>
