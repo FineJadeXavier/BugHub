@@ -55,7 +55,7 @@
                         <option value=0 disabled selected style='display:none;'>请选择一个类别</option>
                         @if(isset($sorts))
                             @foreach($sorts as $v)
-                                <option value="{{ $v->name }}">{{ $v->name }}</option>
+                                <option value="{{ $v->sort_name }}">{{ $v->sort_name }}</option>
                             @endforeach
                         @endif
                     </select>
