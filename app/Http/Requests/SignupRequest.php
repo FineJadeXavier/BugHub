@@ -40,7 +40,7 @@ class SignupRequest extends FormRequest
             'password.min' => '密码不能小于6个字符！',
             'password.max' => '密码不能大于20个字符！',
             'email.required' => "邮箱必填！",
-            'email.regex' => "邮箱格式错误!",
+            'email.regex' => "邮箱格式错误！",
             'email.unique' => '该邮箱被绑定过了！',
         ];
     }
