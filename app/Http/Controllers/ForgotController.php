@@ -28,7 +28,7 @@ class ForgotController extends Controller
         if($result)
         {
             Cache::put('key', $key, 10);
-            return view('user.resetpwd',['email'=>$req->email])->with("success",'发送成功');
+            return view('user.resetpwd',['email'=>$req->email]);
         }
         else
         {
