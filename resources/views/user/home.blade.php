@@ -143,4 +143,12 @@
     </div>
 @endsection()
 @section('js')
+    <script>
+        new Vue({
+            el: '#Main',
+            data: {
+                articles: ''
+            }
+        })
+    </script>
 @endsection()

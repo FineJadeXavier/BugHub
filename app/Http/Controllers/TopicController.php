@@ -42,6 +42,9 @@ class TopicController extends Controller
     {
 
         $article = Article::where('id', $id)->first();
+        //判断文章是否存在
+        if(!$article)
+            return redirect()->route('index');
         //加一次阅读
         $article->views = $article->views + 1;
         $article->save();
