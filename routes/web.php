@@ -8,6 +8,14 @@ Route::get('/search', "TopicController@search")->name('search');
 //登录
 Route::get('/signin', function () {return view('user.signin');})->name('user.signin');
 Route::post('/signin', 'UserController@signin')->name('user.signin.p');
+
+//忘记密码
+Route::get('/forgot', function () {return view('user.forgot');})->name('forgot');
+Route::post('/forgot', 'ForgotController@forgot')->name('forgot.p');
+//重置密码
+//Route::get('/resetpwd', 'ForgotController@resetpwd')->name('resetpwd');
+Route::post('/resetpwd', 'ForgotController@resetpwd_post')->name('resetpwd.p');
+
 //注册
 Route::get('/signup', function () {return view('user.signup');})->name('user.signup');
 Route::post('/signup', 'UserController@signup')->name('user.signup.p');

@@ -47,6 +47,7 @@ class UserController extends Controller
         return redirect()->route('index');
     }
 
+
     /*
      *  注册
      *

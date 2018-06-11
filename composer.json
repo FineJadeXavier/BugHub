@@ -12,6 +12,7 @@
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "mews/captcha": "^2.2",
+        "phpmailer/phpmailer": "^6.0",
         "vanry/laravel-scout-tntsearch": "^1.2"
     },
     "require-dev": {
