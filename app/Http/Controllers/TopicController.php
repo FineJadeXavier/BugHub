@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\TopicRequest;
 use App\Models\Article;
-
+use App\Models\Reply;
 class TopicController extends Controller
 {
     //获取话题数量
@@ -13,25 +13,39 @@ class TopicController extends Controller
         return Article::all()->count();
     }
 
-    //获取文章
-    function index_get(Request $req)
+    //搜索文章
+    function search(Request $req)
     {
-        if($req->type == "all")
-            return Article::orderBy($req->orderby,$req->order)->with("user")->paginate(15);
+        $articles =  Article::search($req->key)->paginate(10);
+        return view('index.index',['articles'=>$articles]);
+    }
 
-        return Article::where("sorts",$req->type)->orderBy($req->orderby,$req->order)->with("user")->paginate(15);
+    //获取文章
+    function index(Request $req)
+    {
+        if(!$req->type)
+            $articles =  Article::orderBy('created_at','desc')->with("user")->paginate(10);
+        else
+            $articles =  Article::where('sorts',$req->type)->orderBy('created_at','desc')->with("user")->paginate(10);
+        return view('index.index',['articles'=>$articles]);
     }
 
     //文章详情页（内容页）
     public function content($id)
     {
-        $article = Article::where('id',$id)->first();
 
         //判断文章是否存在
         if(!$article)
             return redirect()->route('index');
 
         return view('article.content',['article' => $article]);
+        $article = Article::where('id',$id)->first();
+        //加一次阅读
+        $article->views = $article->views+1;
+        $article -> save();
+        //取出评论
+        $reply = Reply::where("article_id",$article->id)->get();
+        return view('article.content',['article' => $article,'reply'=>$reply]);
     }
 
     //发布文章

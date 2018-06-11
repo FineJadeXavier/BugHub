@@ -1,30 +1,16 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Models\Article;
-
-/*
- *@title 全文分词搜索
- *
- *@methods 生成索引
- *         php artisan scout:import "App\Models\Article"
- */
-Route::get('/search', function () {
-    dump(Article::search('java')->get()->toArray());
-    //    $first = Article::find(1);
-});
 
 //首页
-Route::get('/', function () { return view('index.index');})->name('index');
-
-
+Route::get('/', "TopicController@index")->name('index');
+//搜索
+Route::get('/search', "TopicController@search")->name('search');
 //登录
 Route::get('/signin', function () {return view('user.signin');})->name('user.signin');
 Route::post('/signin', 'UserController@signin')->name('user.signin.p');
-
 //注册
 Route::get('/signup', function () {return view('user.signup');})->name('user.signup');
 Route::post('/signup', 'UserController@signup')->name('user.signup.p');
-
 //文章详情（内容页）
 Route::get("/article/content/{id}", "TopicController@content")->name('article.content');
 
@@ -35,14 +21,13 @@ Route::get("/article/content/{id}", "TopicController@content")->name('article.co
  */
 Route::get('/api/members/get',"UserController@api");
 Route::get('/api/articles/get',"TopicController@api");
-//获取文章数据
-Route::get('/api/{type}/{orderby}/{order}',"TopicController@index_get" );
+//个人中心
+Route::get("/user/home/{nickname}", "UserController@home")->name('user.home');
 
 //登录中间件
 Route::middleware('signin')->group(function(){
 
-    //个人中心
-    Route::get("/user/home/{nickname}", "UserController@home")->name('user.home');
+
 
     //编辑个人资料
     Route::get('/user/edit',function () {return view('user.edit');} )->name('user.edit');
