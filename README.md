@@ -70,3 +70,11 @@
 
 
   [1]: http://laravel-admin.org/docs/#/zh/installation
+  
+ ----------
+ #### **邮箱配置**
+ 
+ ### 用于发送找回密码的邮件
+ - 具体配置方法参看 [phpmailer][2]
+ 
+    [2]:https://packagist.org/packages/phpmailer/phpmailer
