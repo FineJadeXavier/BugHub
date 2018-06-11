@@ -1,25 +1,5 @@
 ## DEBUG
 
-### **TODO**
-
-- [x] 登录
-- [x] 注册
-- [ ] 文章
-    - [x] 发布文章
-    - [x] 编辑文章
-    - [x] 文章内容
-- [x] 个人资料修改
-    - [x] 修改邮箱
-    - [x] 修改密码
-- [x] 搜索
-- [x] 主页数据显示
-    <del>- [x]  自动加载 </del>
-    [x] 分类排序
-- [x] 获取社区运行状况
-- [x] 退出登录
-- <del>[ ] 评论回复</del>
-
-----------
 
 ### **编辑器**
 
@@ -70,11 +50,3 @@
 
 
   [1]: http://laravel-admin.org/docs/#/zh/installation
-  
- ----------
- #### **邮箱配置**
- 
- ### 用于发送找回密码的邮件
- - 具体配置方法参看 [phpmailer][2]
- 
-    [2]:https://packagist.org/packages/phpmailer/phpmailer
