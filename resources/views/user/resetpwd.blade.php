@@ -69,4 +69,7 @@
     @if(session('id'))
         {!!  redirect()->route('index'); !!}
     @endif()
+    <script>
+        swal("注意查收你的邮箱",'发送成功','success');
+    </script>
 @endsection()

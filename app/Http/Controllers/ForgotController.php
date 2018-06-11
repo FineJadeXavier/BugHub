@@ -28,7 +28,7 @@ class ForgotController extends Controller
         if($result)
         {
             Cache::put('key', $key, 10);
-            return view('user.resetpwd',['email'=>$req->email])->with("success",'发送成功');
+            return view('user.resetpwd',['email'=>$req->email]);
         }
         else
         {
@@ -57,7 +57,7 @@ class ForgotController extends Controller
 
         Cache::forget('key');
 
-        return redirect()->route('signin')->with("success",'重置密码成功');
+        return redirect()->route('user.signin')->with("success",'重置密码成功');
     }
 
     private function send($receive,$key)
@@ -68,8 +68,9 @@ class ForgotController extends Controller
             $mail->SMTPDebug = 0;                                 // Enable verbose debug output
             $mail->isSMTP();                                      // Set mailer to use SMTP
             $mail->Host = 'smtp.qq.com';  // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->SMTPAuth = true;                              // Enable SMTP authentication
             $mail->Username = '2585770368@qq.com';                 // SMTP username
+            $mail->CharSet = 'UTF-8';
             $mail->Password = 'jstozibhfihxdiei';                           // SMTP password
             $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 465;                                    // TCP port to connect to
@@ -82,7 +83,7 @@ class ForgotController extends Controller
             //Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'DEBUG|找回密码';
-            $mail->Body    = '你的KEY：'.$key;
+            $mail->Body    = '你的KEY：'.$key."       请在10分钟内重置密码，否则key将失效";
 
             $mail->send();
 

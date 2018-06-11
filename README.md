@@ -59,3 +59,14 @@
         Route::get('/search', function () {
            return Article::search('php')->get();
         });
+        
+        
+----------
+
+### **后台**
+
+#### 后台用的是laravel admin
+- 安装详情参见 [laravel admin][1]
+
+
+  [1]: http://laravel-admin.org/docs/#/zh/installation

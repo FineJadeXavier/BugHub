@@ -88,7 +88,7 @@
                 @else
                     <a href="/?type=all" class="tab" >全部</a>
                 @foreach($sorts as $v)
-                <a href="/?type={{ $v->name }}" class="tab" >{{ $v->name }}</a>
+                <a href="/?type={{ $v->sort_name }}" class="tab" >{{ $v->sort_name }}</a>
                 @endforeach
                 @endif()
             </div>

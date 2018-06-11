@@ -98,24 +98,24 @@
                     </div>
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
-                            <td width="33%" align="center">
-                                <a href="/my/nodes" class="dark" style="display: block;"><span class="bigger">0</span>
-                                    <div class="sep3">
-                                    </div>
-                                    <span class="fade">我的问答</span></a>
-                            </td>
-                            <td width="34%" style="border-left: 1px solid rgba(100, 100, 100, 0.4); border-right: 1px solid rgba(100, 100, 100, 0.4);" align="center">
-                                <a href="/my/topics" class="dark" style="display: block;"><span class="bigger">0</span>
-                                    <div class="sep3">
-                                    </div>
-                                    <span class="fade">问答收藏</span></a>
-                            </td>
-                            <td width="33%" align="center">
-                                <a href="/my/following" class="dark" style="display: block;"><span class="bigger">0</span>
-                                    <div class="sep3">
-                                    </div>
-                                    <span class="fade">特别关注</span></a>
-                            </td>
+                            {{--<td width="33%" align="center">--}}
+                                {{--<a href="/my/nodes" class="dark" style="display: block;"><span class="bigger"></span>--}}
+                                    {{--<div class="sep3">--}}
+                                    {{--</div>--}}
+                                    {{--<span class="fade">我的问答</span></a>--}}
+                            {{--</td>--}}
+                            {{--<td width="34%" style="border-left: 1px solid rgba(100, 100, 100, 0.4); border-right: 1px solid rgba(100, 100, 100, 0.4);" align="center">--}}
+                                {{--<a href="/my/topics" class="dark" style="display: block;"><span class="bigger">0</span>--}}
+                                    {{--<div class="sep3">--}}
+                                    {{--</div>--}}
+                                    {{--<span class="fade">问答收藏</span></a>--}}
+                            {{--</td>--}}
+                            {{--<td width="33%" align="center">--}}
+                                {{--<a href="/my/following" class="dark" style="display: block;"><span class="bigger">0</span>--}}
+                                    {{--<div class="sep3">--}}
+                                    {{--</div>--}}
+                                    {{--<span class="fade">特别关注</span></a>--}}
+                            {{--</td>--}}
                         </tr>
                     </table>
                 </div>
@@ -133,20 +133,20 @@
                         </tr>
                     </table>
                 </div>
-                <div class="cell" style="padding: 5px;">
-                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                        <tr>
-                            <td width="32">
-                                <a href="/new"><img src="/msg.png" width="32" border="0"/></a>
-                            </td>
-                            <td width="10">
-                            </td>
-                            <td width="auto" valign="middle" align="left">
-                                <a href="/new"><span>0</span>条未读消息</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                {{--<div class="cell" style="padding: 5px;">--}}
+                    {{--<table cellpadding="0" cellspacing="0" border="0" width="100%">--}}
+                        {{--<tr>--}}
+                            {{--<td width="32">--}}
+                                {{--<a href="/new"><img src="/msg.png" width="32" border="0"/></a>--}}
+                            {{--</td>--}}
+                            {{--<td width="10">--}}
+                            {{--</td>--}}
+                            {{--<td width="auto" valign="middle" align="left">--}}
+                                {{--<a href="/new"><span>0</span>条未读消息</a>--}}
+                            {{--</td>--}}
+                        {{--</tr>--}}
+                    {{--</table>--}}
+                {{--</div>--}}
             </div>
             @endif
 
@@ -189,9 +189,9 @@
         <div class="inner" style="text-align: center">
             <div class="sep20"></div>
             <strong>
-                <a href="/about" class="dark" target="_self">关于</a>
+                <a href="https://github.com/FineJadeXavier/debug" class="dark" target="_self">关于</a>
                 <span> · </span>
-                <a href="/about" class="dark" target="_self">反馈</a>
+                <a href="https://github.com/FineJadeXavier/debug/issues" class="dark" target="_self">反馈</a>
                 <span> · </span>
                 <a href="https://github.com/FineJadeXavier/debug" class="dark" target="_blank" title="GitHub">
                     <img src="/github.png" alt="GitHub" style="width: 16px;position: relative;top: 2px;">

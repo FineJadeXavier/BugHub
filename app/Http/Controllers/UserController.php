@@ -85,14 +85,13 @@ class UserController extends Controller
     {
         //从数据库获取用户信息
         $user = User::where('id',session('id'))->first();
-
         //验证用户密码
-        if (!Hash::check($req->password, $user->password))
-            return back()->withErrors('密码错误！');
-
+        if (!Hash::check($req->password_current, $user->password))
+        {
+            return back()->withErrors('原密码错误！');
+        }
         //修改用户密码
         $user->password = Hash::make($req->password);
-
         $user->save();
 
         return back()->with("success",'修改成功！');
@@ -102,15 +101,13 @@ class UserController extends Controller
     {
         //从数据库获取用户信息
         $user = User::where('id',session('id'))->first();
-
+        if(!$user->email == $req->email_current)
+            return back()->withErrors('原邮箱错误！');
         //修改用户邮箱地址
         $user->email = $req->email;
-
         $user->save();
-
         //修改session中email信息
         session(['email' => $user->email]);
-
         return back()->with("success",'修改成功！');
     }
 
