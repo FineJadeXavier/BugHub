@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\TopicRequest;
+use App\Http\Requests\EditRequest;
 use App\Models\Article;
 use App\Models\Reply;
 use App\Models\Sort;
@@ -57,6 +58,7 @@ class TopicController extends Controller
     function write_view()
     {
         $sorts = Sort::get();
+
         return view('article.write', ['sorts' => $sorts]);
     }
 
@@ -71,12 +73,63 @@ class TopicController extends Controller
         $topic->title = $req->title;
         $topic->content = $req->content;
         $topic->save();
-        return back()->with("success", '发布成功');
+
+        return redirect('/user/home/'.session('nickname'))->with("success", '发布成功');
     }
 
     //编辑文章
-    function edit_post(TopicRequest $req)
+    public function edit($id)
     {
+        //取出文章信息
+        $article = Article::find($id);
 
+        //判断当前文章是否为登录用户
+        if($article->user_id != session('id'))
+        {
+            return back();
+        }
+
+        $sorts = Sort::get();
+
+        return view('article.edit', ['article' => $article,'sorts' => $sorts]);
+    }
+
+    function edit_post(EditRequest $req)
+    {
+        //判断当前文章是否为登录用户
+        $article = Article::find($req->id);
+        if(!$article)
+            return back()->withErrors(['小伙子，你很皮啊']);
+        if($article->user_id != session('id'))
+        {
+            return back()->withErrors(['小伙子，你很皮啊']);
+        }
+
+        //修改
+        $article->title = $req->title;
+        $article->content = $req->content;
+        $article->sorts = $req->node_name;
+
+        $article->save();
+
+        return redirect('/user/home/'.session('nickname'))->with("success", '修改成功');
+    }
+
+    //删除文章
+    public function delete($id){
+
+        //判断当前文章是否为登录用户
+        $article = Article::find($id);
+        if(!$article)
+            return back()->withErrors(['小伙子，你很皮啊']);
+        if($article->user_id != session('id'))
+        {
+            return back()->withErrors(['小伙子，你很皮啊']);
+        }
+
+        //删除
+        $article->delete();
+
+        return redirect('/user/home/'.session('nickname'))->with("success", '删除成功');
     }
 }

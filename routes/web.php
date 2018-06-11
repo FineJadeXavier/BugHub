@@ -35,8 +35,11 @@ Route::middleware('signin')->group(function(){
     Route::post('/user/edit_e','UserController@edit_email')->name('user.edit.email');
 
     //编辑文章
-    Route::get('/article/edit',"TopicController@edit")->name('article.edit');
-    Route::post('/article/edit',"TopicController@edit_post")->name('article.edit.post');
+    Route::get('/article/edit/{id}',"TopicController@edit")->name('article.edit');
+    Route::post('/article/edit/{id}',"TopicController@edit_post")->name('article.edit.post');
+
+    //删除文章
+    Route::get('/article/delete/{id}',"TopicController@delete")->name('article.delete');
 
     //发布文章
     Route::get('/article/new',"TopicController@write_view" )->name('article.new');

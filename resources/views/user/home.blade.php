@@ -111,29 +111,61 @@
             <div class="cell_tabs">
                 <p>{{$user->nickname}} 的所有提问</p>
             </div>
-            @foreach($articles as $v)
-                <div class="cell item" style="">
-                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                        <tr>
-                            <td width="auto" valign="middle">
+            @if($user->nickname == session('nickname'))
+                @foreach($articles as $v)
+                    <div class="cell item" style="">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                                <td width="auto" valign="middle">
                                 <span class="item_title">
                                     <a href="/article/content/{{ $v->id }}">{{ $v->title }}</a>
                                 </span>
-                                <div class="sep5">
-                                </div>
-                                <span class="topic_info">
+                                    <div class="sep5">
+                                    </div>
+                                    <span class="topic_info">
 							<div class="votes"></div>
 							<a class="node" href="/?type={{ $v->sorts }}">{{ $v->sorts }}</a> &nbsp;•&nbsp;
                                     <strong><a href="/user/home/{{ $user->nickname }}">{{ $user->nickname }}</a></strong>&nbsp;•&nbsp; {{ $v->created_at }}
                                 </span>
-                            </td>
-                            <td width="70" align="right" valign="middle">
-                                <a href="/article/content/{{ $v->id }}" class="count_livid">{{ $v->reply }}</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            @endforeach
+                                </td>
+                                <td width="70" align="right" valign="middle">
+                                    <a href="/article/content/{{ $v->id }}" class="count_livid">{{ $v->reply }}</a>
+                                </td>
+                                <td width="40" align="center" valign="middle">
+                                    <a href="/article/edit/{{ $v->id }}">编辑</a>
+                                </td>
+                                <td width="40" align="center" valign="middle">
+                                    <a href="/article/delete/{{ $v->id }}">删除</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                @endforeach
+            @else
+                @foreach($articles as $v)
+                    <div class="cell item" style="">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                                <td width="auto" valign="middle">
+                                <span class="item_title">
+                                    <a href="/article/content/{{ $v->id }}">{{ $v->title }}</a>
+                                </span>
+                                    <div class="sep5">
+                                    </div>
+                                    <span class="topic_info">
+							<div class="votes"></div>
+							<a class="node" href="/?type={{ $v->sorts }}">{{ $v->sorts }}</a> &nbsp;•&nbsp;
+                                    <strong><a href="/user/home/{{ $user->nickname }}">{{ $user->nickname }}</a></strong>&nbsp;•&nbsp; {{ $v->created_at }}
+                                </span>
+                                </td>
+                                <td width="70" align="right" valign="middle">
+                                    <a href="/article/content/{{ $v->id }}" class="count_livid">{{ $v->reply }}</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                @endforeach
+            @endif
             <div class="inner">
                 {{ $articles -> links() }}
             </div>
