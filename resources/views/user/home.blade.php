@@ -135,7 +135,7 @@
                                     <a href="/article/edit/{{ $v->id }}">编辑</a>
                                 </td>
                                 <td width="40" align="center" valign="middle">
-                                    <a href="/article/delete/{{ $v->id }}">删除</a>
+                                    <a href="/article/delete/{{ $v->id }}" onclick="return confirm('确认要删除？')">删除</a>
                                 </td>
                             </tr>
                         </table>
