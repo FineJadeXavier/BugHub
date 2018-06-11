@@ -68,13 +68,33 @@
             background-color: #fff;
             border-color: #dee2e6;
         }
+        @if(isset($type))
+        #Tabs a[href$="{{ $type }}"] {
+            background-color: #334 !important;
+            color: #fff !important;
+        }
+        #Tabs a[href$="{{ $type }}"] {
+            background-color: #334 !important;
+            color: #fff !important;
+        }
+        @endif()
     </style>
     <div id="Main">
         <div class="sep20"></div>
         <div class="box" id="article" >
-            <div class="cell" id="SecondaryTabs">
-                <a href="#" class="tab_current">最新主题</a> &nbsp; &nbsp;
+            <div class="inner" id="Tabs">
+                @if(!isset($sorts))
+                    <a href="/" class="tab" >回到首页</a>
+                @else
+                    <a href="/?type=all" class="tab" >全部</a>
+                @foreach($sorts as $v)
+                <a href="/?type={{ $v->name }}" class="tab" >{{ $v->name }}</a>
+                @endforeach
+                @endif()
             </div>
+            @if(count($articles) == 0 )
+                    <h1>该分类下没有主题</h1>
+            @else
             @foreach($articles as $v)
             <div class="cell item" style="">
                 <table cellpadding="0" cellspacing="0" border="0" width="100%"  >
@@ -92,7 +112,7 @@
                             <div class="sep5"></div>
                             <span class="topic_info">
                                 <div class="votes"></div>
-                                <a class="node" href="/search?key={{ $article->sorts}}">{{ $v->sorts }}</a> &nbsp;•&nbsp;
+                                <a class="node" href="/?type={{ $v->sorts}}">{{ $v->sorts }}</a> &nbsp;•&nbsp;
                                 <strong>
                                     <a href="/user/home/{{ $v->user->nickname }}">{{ $v->user->nickname }}</a>
                                 </strong>
@@ -106,8 +126,9 @@
                 </table>
             </div>
             @endforeach
+            @endif
         <div class="sep5"></div>
-                    {{ $articles->links() }}
+            {{ $articles->links() }}
         </div>
     </div>
 @endsection()

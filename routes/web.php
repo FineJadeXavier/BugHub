@@ -39,7 +39,7 @@ Route::middleware('signin')->group(function(){
     Route::post('/article/edit',"TopicController@edit_post")->name('article.edit.post');
 
     //发布文章
-    Route::get('/article/new',function () {return view('article.write');} )->name('article.new');
+    Route::get('/article/new',"TopicController@write_view" )->name('article.new');
     Route::post('/article/new',"TopicController@write" )->name('article.new.post');
 
     //退出登录

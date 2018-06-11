@@ -9,6 +9,7 @@ use App\Http\Requests\EditEmailRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
+use App\Models\Article;
 class UserController extends Controller
 {
     /*
@@ -122,7 +123,8 @@ class UserController extends Controller
         $user = User::where('nickname',$req->nickname)->first();
         if(!$user)
             return redirect()->route('index');
-        return view("user.home",['user'=>$user]);
+        $articles = Article::where('user_id',$user->id)->paginate(10);
+        return view("user.home",['user'=>$user,"articles"=>$articles]);
     }
 
     //获取用户数量
