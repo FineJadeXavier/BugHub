@@ -19,7 +19,15 @@
         cp .env.example .env
 
 - 配置数据库 .env
-- 增加配置项 .env
+    
+        DB_CONNECTION=mysql
+        DB_HOST=127.0.0.1
+        DB_PORT=3306
+        DB_DATABASE=debug
+        DB_USERNAME=root
+        DB_PASSWORD=123456
+    
+- 增加搜索引擎配置项 .env
 
         SCOUT_DRIVER=tntsearch
         TNTSEARCH_TOKENIZER=jieba
@@ -35,6 +43,10 @@
 - 生成新key
 
         php artisan key:generate
+        
+- 生成后台数据
+    
+        php artisan admin:install
         
 - 完成安装
 
