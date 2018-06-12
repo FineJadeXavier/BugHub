@@ -1,80 +1,66 @@
-## DEBUG
+## 环境准备
+- 一个可以运行 laravel 的环境
+- 以及以下PHP扩展
+    - pdo_sqlite
+    - sqlite3
+    - mbstring
 
-### **TODO**
+## 如何使用
+- 克隆项目到本地
 
-- [x] 登录
-- [x] 注册
-- [ ] 文章
-    - [x] 发布文章
-    - [x] 编辑文章
-    - [x] 文章内容
-- [x] 个人资料修改
-    - [x] 修改邮箱
-    - [x] 修改密码
-- [x] 搜索
-- [x] 主页数据显示
-    <del>- [x]  自动加载 </del>
-    [x] 分类排序
-- [x] 获取社区运行状况
-- [x] 退出登录
-- <del>[ ] 评论回复</del>
+        git clone https://github.com/FineJadeXavier/debug.git
 
-----------
+- 安装扩展包依赖
 
-### **编辑器**
-
-- 编辑器图片默认会上传到 public/uploads/content 目录下；
-- 编辑器相关功能配置位于 config/wang-editor.php 文件中。
-- 使用之前，先 php artisan vendor:publish --force
-
-##### 实例
-    <div class="wangEdit">
-        {!! we_css() !!}
-        {!! we_js() !!}
-        {!! we_field('wangeditor', 'content', '这里是事先写在里面的') !!}
-        {!! we_config('wangeditor') !!}
-    </div>
-    
-----------
-
-### **全文索引 + 分词搜索**
-
-- 用的TNTSearch + jieba分词
-- 具体参看 https://baijunyao.com/article/154
-
-#### 依赖以下PHP扩展
-
-- pdo_sqlite
-- sqlite3
-- mbstring
-
-#### 如何使用
-- 生成索引
-
-        php artisan scout:import "App\Models\Article"
-    
-- 把要搜索的词给 Article::search() 处理
-
-#### 实例 搜索 'php'
-        Route::get('/search', function () {
-           return Article::search('php')->get();
-        });
+        composer install
         
+- 生成配置文件
+        
+        cp .env.example .env
+
+- 配置数据库 .env
+- 增加配置项 .env
+
+        SCOUT_DRIVER=tntsearch
+        TNTSEARCH_TOKENIZER=jieba
+        
+- 给日志目录读写权限
+    
+        chmod -R 777 storage
+
+- 给上传图片目录读写权限
+
+        chmod -R 777 public/uploads/content
+        
+- 生成新key
+
+        php artisan key:generate
+        
+- 完成安装
+
+## 其他说明
+
+#### 编辑器
+
+- 编辑器图片默认会上传到 public/uploads/content 目录下
+- 编辑器相关功能配置位于 config/wang-editor.php 文件中
+- 其他详细说明参看 [lravel-wang-deitor][1]
+
+----------
+
+#### 中文分词搜索引擎
+- TNTSearch + jieba分词
+- 其他详细说明参看 [白俊遥博客][3]
         
 ----------
 
-### **后台**
+#### 后台系统
+- 后台地址：/admin
+- 账号：admin
+- 密码：admin
+- 其他详细说明参看 [laravel admin][2]
 
-#### 后台用的是laravel admin
-- 安装详情参见 [laravel admin][1]
 
-
-  [1]: http://laravel-admin.org/docs/#/zh/installation
-  
- ----------
- #### **邮箱配置**
- 
- ### 用于发送找回密码的邮件
- - 具体配置方法参看 [phpmailer][2]
- 
-    [2]:https://packagist.org/packages/phpmailer/phpmailer
+  [1]: https://github.com/douyasi/laravel-wang-editor/blob/master/README.md
+  [2]: http://laravel-admin.org/docs/#/zh/installation
+  [3]: https://baijunyao.com/article/154
