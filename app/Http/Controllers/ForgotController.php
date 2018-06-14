@@ -67,17 +67,17 @@ class ForgotController extends Controller
             //Server settings
             $mail->SMTPDebug = 0;                                 // Enable verbose debug output
             $mail->isSMTP();                                      // Set mailer to use SMTP
-            $mail->Host = 'smtp.qq.com';  // Specify main and backup SMTP servers
+            $mail->Host = 'smtp.163.com';  // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                              // Enable SMTP authentication
-            $mail->Username = '2585770368@qq.com';                 // SMTP username
+            $mail->Username = 'flyphp@163.com';                 // SMTP username
             $mail->CharSet = 'UTF-8';
-            $mail->Password = 'jstozibhfihxdiei';                           // SMTP password
+            $mail->Password = 'codebuf9527';                           // SMTP password
             $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 465;                                    // TCP port to connect to
 
             //Recipients
-            $mail->From = "2585770368@qq.com";
-            $mail->FromName = "lanmiao";
+            $mail->From = "flyphp@163.com";
+            $mail->FromName = "DEBUG";
             $mail->addAddress($receive);     // Add a recipient
 
             //Content
