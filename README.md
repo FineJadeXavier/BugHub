@@ -2,7 +2,7 @@
 
 此项目是一个前后端分离的社区问答系统
 
-具体效果请看[BUGHUB](http://bughub.2video.cn)
+具体效果请看<a href="http://bughub.2video.cn" target="_blank">BUGHUB<a>
 
 --------
 
