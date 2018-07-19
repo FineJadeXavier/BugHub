@@ -1,60 +1,13 @@
 <?php
-use Illuminate\Support\Facades\Route;
-
-//首页
-Route::get('/', "TopicController@index")->name('index');
-//搜索
-Route::get('/search', "TopicController@search")->name('search');
-//登录
-Route::get('/signin', function () {return view('user.signin');})->name('user.signin');
-Route::post('/signin', 'UserController@signin')->name('user.signin.p');
-
-//忘记密码
-Route::get('/forgot', function () {return view('user.forgot');})->name('forgot');
-Route::post('/forgot', 'ForgotController@forgot')->name('forgot.p');
-//重置密码
-//Route::get('/resetpwd', 'ForgotController@resetpwd')->name('resetpwd');
-Route::post('/resetpwd', 'ForgotController@resetpwd_post')->name('resetpwd.p');
-
-//注册
-Route::get('/signup', function () {return view('user.signup');})->name('user.signup');
-Route::post('/signup', 'UserController@signup')->name('user.signup.p');
-//文章详情（内容页）
-Route::get("/article/content/{id}", "TopicController@content")->name('article.content');
 
 /*
- * 获取社区运行状况
- * 获取注册人数
- * 获取文章数
- */
-Route::get('/api/members/get',"UserController@api");
-Route::get('/api/articles/get',"TopicController@api");
-//个人中心
-Route::get("/user/home/{nickname}", "UserController@home")->name('user.home');
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-//登录中间件
-Route::middleware('signin')->group(function(){
-
-
-
-    //编辑个人资料
-    Route::get('/user/edit',function () {return view('user.edit');} )->name('user.edit');
-    Route::post('/user/edit_p','UserController@edit_pwd')->name('user.edit.pwd');
-    Route::post('/user/edit_e','UserController@edit_email')->name('user.edit.email');
-
-    //编辑文章
-    Route::get('/article/edit/{id}',"TopicController@edit")->name('article.edit');
-    Route::post('/article/edit/{id}',"TopicController@edit_post")->name('article.edit.post');
-
-    //删除文章
-    Route::get('/article/delete/{id}',"TopicController@delete")->name('article.delete');
-
-    //发布文章
-    Route::get('/article/new',"TopicController@write_view" )->name('article.new');
-    Route::post('/article/new',"TopicController@write" )->name('article.new.post');
-
-    //退出登录
-    Route::get("signout",function(){ session()->flush() ; return redirect()->route('index'); })->name('signout');
-
-
-});

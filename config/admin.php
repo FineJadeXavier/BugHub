@@ -5,12 +5,12 @@ return [
     /*
      * Laravel-admin name.
      */
-    'name' => 'DEBUG-admin',
+    'name' => 'Laravel-admin',
 
     /*
      * Logo in admin panel header.
      */
-    'logo' => '<b>DEBUG</b> admin',
+    'logo' => '<b>Laravel</b> admin',
 
     /*
      * Mini-logo in admin panel header.

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -12,11 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /**
-         * 增加内存防止中文分词报错
-         */
-        ini_set('memory_limit', "256M");
-
+        //
     }
 
     /**

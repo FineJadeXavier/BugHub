@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'PRC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -124,6 +124,8 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -146,15 +148,10 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        'Douyasi\WangEditor\EditorServiceProvider', //富文本编辑器
-        Mews\Captcha\CaptchaServiceProvider::class, //图形验证码
 
-        /**
-         * TNTSearch 全文搜索
+        /*
+         * Package Service Providers...
          */
-        Laravel\Scout\ScoutServiceProvider::class,
-        Vanry\Scout\TNTSearchScoutServiceProvider::class,
-
 
         /*
          * Application Service Providers...
@@ -213,7 +210,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Captcha' => Mews\Captcha\Facades\Captcha::class,//图形验证码
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
 
     ],
 
