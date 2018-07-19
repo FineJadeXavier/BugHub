@@ -2,13 +2,13 @@
 
 此项目是一个前后端分离的社区问答系统
 
-具体效果请看<a href="http://bughub.2video.cn" target="_blank">BUGHUB<a>
+具体效果请看[BUGHUB](http://bughub.2video.cn)
 
 --------
 
 # 单点登录接口说明
 
-前端提供了一个用于实现[单点登陆](/document/SSO.md)的接口，详情请看[单点登录文档](https://yq.aliyun.com/articles/42566)
+前端提供了一个用于实现[单点登陆](https://yq.aliyun.com/articles/42566)的接口，详情请看[单点登录文档](/document/SSO.md)
 
 --------
 
