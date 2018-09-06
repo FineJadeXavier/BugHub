@@ -14,7 +14,9 @@ class RegisterController extends Controller {
     use RegistersUsers;
     use Helpers;
 
+    // 用户注册
     public function register(Request $req) {
+        // 1. 校验 用户用户名 用户邮箱 用户密码 字段
         $rules = [
             'name' => 'required|unique:users|max:20|min:2',
             'email' => 'required|email|unique:users',
@@ -41,6 +43,7 @@ class RegisterController extends Controller {
             ];
         };
 
+        // 2. 创建新用户 保存相关信息
         $user = $this->create($req->all());
         if ($user->save()) {
             $token = JWTAuth::fromUser($user);
