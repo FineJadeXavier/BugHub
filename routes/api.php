@@ -30,6 +30,10 @@ $api->version('v1', function ($api) {
     // 返回 回帖周榜
     $api->get('week/comment', 'App\Http\Controllers\Api\UsersController@weekComment');
 
+    // 所有用户 每周 每月 每年 每人发帖 评论排行榜
+    $api->get('allUserPostLeaderboard', 'App\Http\Controllers\Api\UsersController@allUserPostLeaderboard');
+    
+
     // 返回分类文章
     $api->get('article', 'App\Http\Controllers\Api\ArticleController@returnArticle');
 

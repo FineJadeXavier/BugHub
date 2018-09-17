@@ -418,4 +418,72 @@ class UsersController extends Controller
         }
         
     }
+
+    // 获取指定日期内的评论榜
+    function replyList($days=7)
+    {
+        return DB::table("comments")->join("users",'comments.user_id','=','users.id')
+        ->where('comments.created_at', '>=', date("Y-m-d",strtotime('-{$days}days')))
+        ->select("users.name","users.avatar",DB::raw("count(user_id) as comments"))
+        ->orderBy("comments",'desc')
+        ->groupBy("comments.user_id")
+        ->take(20)
+        ->get();
+    }
+
+    // 获取指定日期内的发帖榜
+    function postList($days=7)
+    {
+        return DB::table("articles")->join("users",'articles.user_id','=','users.id')
+        ->where('articles.created_at', '>=', date("Y-m-d",strtotime('-{$days}days')))
+        ->select("users.name","users.avatar",DB::raw("count(user_id) as articles"))
+        ->orderBy("articles",'desc')
+        ->groupBy("articles.user_id")
+        ->take(20)
+        ->get();
+    }
+
+
+    // 所有用户 每周 每月 每年 每人发帖 评论排行榜
+    function allUserPostLeaderboard()
+    {
+        // 每周评论榜
+        $weekReplyList = self::replyList(7);
+        // 每月评论榜
+        $monthReplyList = self::replyList(30);
+        // 每年评论榜
+        $yearReplyList = self::replyList(365);
+        // 每周发帖榜
+        $weekPostList = self::postList(7);
+        // 每月发帖榜
+        $monthPostList = self::postList(30);
+        // 每年发帖榜
+        $yearPostList = self::postList(365);
+
+        return [
+            "errno"=>0,
+            "replyList"=>[
+                "weekReplyList"=>$weekReplyList,
+                "monthReplyList"=>$monthReplyList,
+                "yearReplyList"=>$yearReplyList,
+            ],
+            "postList"=>[
+                "weekPostList"=>$weekPostList,
+                "monthPostList"=>$monthPostList,
+                "yearPostList"=>$yearPostList,
+            ],
+
+        ];
+
+
+       
+    }
+
+    // 每个班级 每周 每月 每年 每人发帖 评论排行榜
+    function eachClassPostLeaderboard()
+    {
+        
+    }
+
+   
 }
