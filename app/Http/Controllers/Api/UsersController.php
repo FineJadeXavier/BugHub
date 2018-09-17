@@ -423,11 +423,11 @@ class UsersController extends Controller
     function replyList($days=7)
     {
         return DB::table("comments")->join("users",'comments.user_id','=','users.id')
-        ->where('comments.created_at', '>=', date("Y-m-d",strtotime('-{$days}days')))
+        ->where('comments.created_at', '>=', date("Y-m-d",strtotime("-{$days}days")))
         ->select("users.name","users.avatar",DB::raw("count(user_id) as comments"))
         ->orderBy("comments",'desc')
         ->groupBy("comments.user_id")
-        ->take(20)
+        ->take(10)
         ->get();
     }
 
@@ -435,11 +435,11 @@ class UsersController extends Controller
     function postList($days=7)
     {
         return DB::table("articles")->join("users",'articles.user_id','=','users.id')
-        ->where('articles.created_at', '>=', date("Y-m-d",strtotime('-{$days}days')))
+        ->where('articles.created_at', '>=', date("Y-m-d",strtotime("-{$days}days")))
         ->select("users.name","users.avatar",DB::raw("count(user_id) as articles"))
         ->orderBy("articles",'desc')
         ->groupBy("articles.user_id")
-        ->take(20)
+        ->take(10)
         ->get();
     }
 
