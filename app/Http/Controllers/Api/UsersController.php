@@ -423,8 +423,11 @@ class UsersController extends Controller
     function replyList($days=7)
     {
         $days = date("Y-m-d",strtotime("-{$days}days"));
-        return DB::select("select `bugub_users`.`id`, `bugub_users`.`name`, `bugub_users`.`avatar`, count(user_id) as comments from `bugub_comments` inner join `bugub_users` on `bugub_comments`.`user_id` = `bugub_users`.`id` where `bugub_comments`.`created_at` >= '$days' group by `bugub_comments`.`user_id` order by `comments` desc limit 10");
+        return DB::select("select bugub_users.id as user_id,bugub_users.name as user_name,bugub_users.avatar,bugub_articles.title,bugub_articles.id as article_id,bugub_articles.comments from bugub_articles inner join bugub_users on bugub_users.id = bugub_articles.user_id where `bugub_articles`.`created_at` >= '$days' group by bugub_articles.user_id order by bugub_articles.comments desc limit 10");
+        
     }
+
+
 
     // 获取指定日期内的发帖榜
     function postList($days=7)
@@ -476,7 +479,7 @@ class UsersController extends Controller
 
         for ($i=0; $i < count($allClass); $i++) { 
             $class =  $allClass[$i]['class'];
-            $user_id[$class] = DB::select("select `bugub_users`.`id`, `bugub_users`.`class`,`bugub_users`.`name`, `bugub_users`.`avatar`, count(user_id) as comments from `bugub_comments` inner join `bugub_users` on `bugub_comments`.`user_id` = `bugub_users`.`id` where `bugub_comments`.`created_at` >= '$days' and `bugub_users`.`class` = '$class' group by `bugub_comments`.`user_id` order by `comments` desc limit 10");
+            $user_id[$class] = DB::select("select bugub_users.id as user_id,bugub_users.name as user_name,bugub_users.avatar,bugub_articles.title,bugub_articles.id as article_id,bugub_articles.comments from bugub_articles inner join bugub_users on bugub_users.id = bugub_articles.user_id where `bugub_articles`.`created_at` >= '$days' group by bugub_articles.user_id order by bugub_articles.comments desc limit 10");
         }
 
         return $user_id;
