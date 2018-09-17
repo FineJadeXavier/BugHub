@@ -32,6 +32,9 @@ $api->version('v1', function ($api) {
 
     // 所有用户 每周 每月 每年 每人发帖 评论排行榜
     $api->get('allUserPostLeaderboard', 'App\Http\Controllers\Api\UsersController@allUserPostLeaderboard');
+
+    // 每个班级 每周 每月 每年 每人发帖 评论排行榜
+    $api->get('eachClassPostLeaderboard', 'App\Http\Controllers\Api\UsersController@eachClassPostLeaderboard');
     
 
     // 返回分类文章

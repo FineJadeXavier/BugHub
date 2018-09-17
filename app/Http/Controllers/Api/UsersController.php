@@ -422,30 +422,20 @@ class UsersController extends Controller
     // 获取指定日期内的评论榜
     function replyList($days=7)
     {
-        return DB::table("comments")->join("users",'comments.user_id','=','users.id')
-        ->where('comments.created_at', '>=', date("Y-m-d",strtotime("-{$days}days")))
-        ->select("users.name","users.avatar",DB::raw("count(user_id) as comments"))
-        ->orderBy("comments",'desc')
-        ->groupBy("comments.user_id")
-        ->take(10)
-        ->get();
+        $days = date("Y-m-d",strtotime("-{$days}days"));
+        return DB::select("select `bugub_users`.`id`, `bugub_users`.`name`, `bugub_users`.`avatar`, count(user_id) as comments from `bugub_comments` inner join `bugub_users` on `bugub_comments`.`user_id` = `bugub_users`.`id` where `bugub_comments`.`created_at` >= '$days' group by `bugub_comments`.`user_id` order by `comments` desc limit 10");
     }
 
     // 获取指定日期内的发帖榜
     function postList($days=7)
     {
-        return DB::table("articles")->join("users",'articles.user_id','=','users.id')
-        ->where('articles.created_at', '>=', date("Y-m-d",strtotime("-{$days}days")))
-        ->select("users.name","users.avatar",DB::raw("count(user_id) as articles"))
-        ->orderBy("articles",'desc')
-        ->groupBy("articles.user_id")
-        ->take(10)
-        ->get();
+        $days = date("Y-m-d",strtotime("-{$days}days"));
+        return DB::select("select `bugub_users`.`id`, `bugub_users`.`name`, `bugub_users`.`avatar`, count(user_id) as articles from `bugub_articles` inner join `bugub_users` on `bugub_articles`.`user_id` = `bugub_users`.`id` where `bugub_articles`.`created_at` >= '$days' group by `bugub_articles`.`user_id` order by `articles` desc limit 10"); 
     }
 
 
     // 所有用户 每周 每月 每年 每人发帖 评论排行榜
-    function allUserPostLeaderboard()
+    function allUserPostLeaderboard()   
     {
         // 每周评论榜
         $weekReplyList = self::replyList(7);
@@ -459,14 +449,16 @@ class UsersController extends Controller
         $monthPostList = self::postList(30);
         // 每年发帖榜
         $yearPostList = self::postList(365);
-
+ 
         return [
             "errno"=>0,
+            // 回复榜单
             "replyList"=>[
                 "weekReplyList"=>$weekReplyList,
                 "monthReplyList"=>$monthReplyList,
                 "yearReplyList"=>$yearReplyList,
             ],
+            // 发帖榜单
             "postList"=>[
                 "weekPostList"=>$weekPostList,
                 "monthPostList"=>$monthPostList,
@@ -474,15 +466,70 @@ class UsersController extends Controller
             ],
 
         ];
-
-
-       
     }
+
+    // 获取每个班级指定日期内的评论榜
+    function eachClassReplyList($days=7)
+    {
+        $days = date("Y-m-d",strtotime("-{$days}days"));
+        $allClass =  User::groupBy("class")->select("class")->get();
+
+        for ($i=0; $i < count($allClass); $i++) { 
+            $class =  $allClass[$i]['class'];
+            $user_id[$class] = DB::select("select `bugub_users`.`id`, `bugub_users`.`class`,`bugub_users`.`name`, `bugub_users`.`avatar`, count(user_id) as comments from `bugub_comments` inner join `bugub_users` on `bugub_comments`.`user_id` = `bugub_users`.`id` where `bugub_comments`.`created_at` >= '$days' and `bugub_users`.`class` = '$class' group by `bugub_comments`.`user_id` order by `comments` desc limit 10");
+        }
+
+        return $user_id;
+    }
+
+    // 获取每个班级指定日期内的发帖榜
+    function eachClassPostList($days=7)
+    {
+        $days = date("Y-m-d",strtotime("-{$days}days"));
+        $allClass =  User::groupBy("class")->select("class")->get();
+
+        for ($i=0; $i < count($allClass); $i++) { 
+            $class =  $allClass[$i]['class'];
+            $user_id[$class] = DB::select("select `bugub_users`.`id`, `bugub_users`.`class`,`bugub_users`.`name`, `bugub_users`.`avatar`, count(user_id) as articles from `bugub_articles` inner join `bugub_users` on `bugub_articles`.`user_id` = `bugub_users`.`id` where `bugub_articles`.`created_at` >= '$days' and `bugub_users`.`class` = '$class' group by `bugub_articles`.`user_id` order by `articles` desc limit 10");
+        }
+
+        return $user_id;
+                
+    }
+    
 
     // 每个班级 每周 每月 每年 每人发帖 评论排行榜
     function eachClassPostLeaderboard()
     {
-        
+         // 每周评论榜
+        $eachClassWeekReplyList = self::eachClassReplyList(7);
+        // 每月评论榜
+        $eachClassMonthReplyList = self::eachClassReplyList(30);
+        // 每年评论榜
+        $eachClassYearReplyList = self::eachClassReplyList(365);
+        // 每周发帖榜
+        $eachClassWeekPostList = self::eachClassPostList(7);
+        // 每月发帖榜
+        $eachClassMonthPostList = self::eachClassPostList(30);
+        // 每年发帖榜
+        $eachClassYearPostList = self::eachClassPostList(365);
+ 
+        return [
+            "errno"=>0,
+            // 回复榜单
+            "replyList"=>[
+                "eachClassWeekReplyList"=>$eachClassWeekReplyList,
+                "eachClassMonthReplyList"=>$eachClassMonthReplyList,
+                "eachClassYearReplyList"=>$eachClassYearReplyList,
+            ],
+            // 发帖榜单
+            "postList"=>[
+                "eachClassWeekPostList"=>$eachClassWeekPostList,
+                "eachClassMonthPostList"=>$eachClassMonthPostList,
+                "eachClassYearPostList"=>$eachClassYearPostList,
+            ],
+
+        ];
     }
 
    
